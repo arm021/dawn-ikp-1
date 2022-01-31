@@ -1,5 +1,104 @@
 {
-  "current": "Default",
+  "current": {
+    "favicon": "shopify:\/\/shop_images\/karite-logo-1531214864.png",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "settings": {
+              "text": "Welcome to our store",
+              "color_scheme": "background-1",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "color_scheme": "background-1",
+          "logo": "shopify:\/\/shop_images\/karite-logo-1531214864.png",
+          "logo_width": 140,
+          "logo_position": "middle-left",
+          "menu": "main-menu",
+          "show_line_separator": true,
+          "enable_sticky_header": true,
+          "margin_bottom": 0
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "Institut Karite Paris",
+              "subtext": "<p>420 rue Saint Honoré<br\/>Siège Social - Head Office<br\/>75008 Paris France<\/p><p>01 40 07 02 85<\/p><p>contact@ikparis.com<\/p>"
+            }
+          },
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Shop",
+              "menu": "shop"
+            }
+          },
+          "footer-1": {
+            "type": "link_list",
+            "settings": {
+              "heading": "The House of Shea",
+              "menu": "the-house-of-shea"
+            }
+          },
+          "e4751492-27cd-4534-af4c-7291adb06622": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Information",
+              "menu": "information"
+            }
+          }
+        },
+        "block_order": [
+          "footer-2",
+          "footer-0",
+          "footer-1",
+          "e4751492-27cd-4534-af4c-7291adb06622"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": false,
+          "newsletter_heading": "Subscribe to our emails",
+          "show_social": true,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true,
+          "margin_top": 48,
+          "padding_top": 36,
+          "padding_bottom": 36
+        }
+      },
+      "main-password-header": {
+        "type": "main-password-header",
+        "settings": {
+        }
+      },
+      "main-password-footer": {
+        "type": "main-password-footer",
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
       "sections": {
@@ -15,7 +114,9 @@
           },
           "block_order": [
             "announcement-bar-0"
-          ]
+          ],
+          "settings": {
+          }
         },
         "header": {
           "type": "header",
@@ -27,7 +128,9 @@
           "type": "footer",
           "blocks": {
             "footer-0": {
-              "type": "link_list"
+              "type": "link_list",
+              "settings": {
+              }
             },
             "footer-1": {
               "type": "link_list",
@@ -55,10 +158,14 @@
           }
         },
         "main-password-header": {
-          "type": "main-password-header"
+          "type": "main-password-header",
+          "settings": {
+          }
         },
         "main-password-footer": {
-          "type": "main-password-footer"
+          "type": "main-password-footer",
+          "settings": {
+          }
         }
       }
     }
