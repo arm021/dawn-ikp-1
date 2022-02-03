@@ -159,6 +159,12 @@ slider-component {
   display: block;
 }
 
+@media screen and (min-width:750px) {
+  .slider-counter__link--dots .dot {
+    display: none;
+  }
+}
+
 .slider-counter__link--active.slider-counter__link--dots .dot {
   background-color: rgb(var(--color-foreground));
 }
