@@ -2777,3 +2777,68 @@ details-disclosure > details {
     }
   }
 }
+
+/* Custom style */
+@media screen and (min-width: 990px) {
+  .grid--5-col-desktop .grid__item {
+    width: calc(20% - var(--grid-desktop-horizontal-spacing) * 4 / 5);
+  }
+}
+
+.flag-top-container {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  top: 24px;
+  margin: -25px 0 0;
+}
+  
+@media screen and (min-width: 750px) {
+  .flag-top-container {
+    top: 49px;
+    margin: -50px 0 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .flag-top-container {
+    top: 74px;
+    margin: -75px 0 0;
+  }
+}
+
+.flag-top, .flag-bottom {
+  display: block !important;
+  width: 50%;
+  height: 25px;
+  background-color: rgb(var(--color-background));
+  background-size: cover;
+}
+
+@media screen and (min-width: 750px) {
+  .flag-top, .flag-bottom {
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .flag-top, .flag-bottom {
+    height: 75px;
+  }
+}
+
+.flag-top-left {
+  clip-path: polygon(0% 100%, 100% 0%, 0% 0%);
+}
+
+.flag-top-right {
+  clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
+}
+  
+.flag-bottom-left {
+  clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+}
+
+.flag-bottom-right {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 0%);
+}

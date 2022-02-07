@@ -46,7 +46,7 @@
           elsif section.blocks.size > 6
             assign footer_grid_class = 'grid--4-col-desktop'
           elsif section.blocks.size > 4
-            assign footer_grid_class = 'grid--3-col-tablet'
+            assign footer_grid_class = 'grid--5-col-desktop'
           endif
         -%}
         <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}">
@@ -92,16 +92,12 @@
                   </div>
                 {%- when 'social_icons' -%}
                   <div class="footer-block__details-content footer-block-social">
-                    {%- if block.settings.heading != blank -%}
-                      <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
-                    {%- endif -%}
-
                     <ul class="footer__list-social list-unstyled list-social" role="list">
                       {%- if settings.social_twitter_link != blank -%}
                         <li class="list-social__item">
                           <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                             {%- render 'icon-twitter' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                            <span>{{ 'general.social.links.twitter' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -109,7 +105,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                             {%- render 'icon-facebook' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                            <span>{{ 'general.social.links.facebook' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -117,7 +113,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                             {%- render 'icon-pinterest' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                            <span>{{ 'general.social.links.pinterest' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -125,7 +121,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                             {%- render 'icon-instagram' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                            <span>{{ 'general.social.links.instagram' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -133,7 +129,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                             {%- render 'icon-tiktok' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                            <span>{{ 'general.social.links.tiktok' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -141,7 +137,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                             {%- render 'icon-tumblr' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                            <span>{{ 'general.social.links.tumblr' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -149,7 +145,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                             {%- render 'icon-snapchat' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                            <span>{{ 'general.social.links.snapchat' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -157,7 +153,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                             {%- render 'icon-youtube' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                            <span>{{ 'general.social.links.youtube' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -165,7 +161,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                             {%- render 'icon-vimeo' -%}
-                            <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                            <span>{{ 'general.social.links.vimeo' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -226,12 +222,12 @@
         {%- endif -%}
 
         {%- if section.settings.show_social -%}
-          <ul class="footer__list-social list-unstyled list-social" role="list">
+          <ul class="footer__list-social list-unstyled list-social mobile-view" role="list">
             {%- if settings.social_twitter_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                   {%- render 'icon-twitter' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                  <span>{{ 'general.social.links.twitter' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -239,7 +235,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                   {%- render 'icon-facebook' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                  <span>{{ 'general.social.links.facebook' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -247,7 +243,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                   {%- render 'icon-pinterest' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  <span>{{ 'general.social.links.pinterest' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -255,7 +251,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                   {%- render 'icon-instagram' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                  <span>{{ 'general.social.links.instagram' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -263,7 +259,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                   {%- render 'icon-tiktok' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                  <span>{{ 'general.social.links.tiktok' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -271,7 +267,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                   {%- render 'icon-tumblr' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                  <span>{{ 'general.social.links.tumblr' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -279,7 +275,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                   {%- render 'icon-snapchat' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                  <span>{{ 'general.social.links.snapchat' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -287,7 +283,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                   {%- render 'icon-youtube' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                  <span>{{ 'general.social.links.youtube' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -295,7 +291,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                   {%- render 'icon-vimeo' -%}
-                  <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                  <span>{{ 'general.social.links.vimeo' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -402,13 +398,13 @@
         </div>
 
         {%- if section.settings.show_social -%}
-          <div class="footer__list-social">
+          <div class="footer__list-social tablet-view">
             <ul class="footer__list-social list-unstyled list-social" role="list">
               {%- if settings.social_twitter_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                     {%- render 'icon-twitter' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                    <span>{{ 'general.social.links.twitter' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -416,7 +412,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                     {%- render 'icon-facebook' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                    <span>{{ 'general.social.links.facebook' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -424,7 +420,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                     {%- render 'icon-pinterest' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                    <span>{{ 'general.social.links.pinterest' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -432,7 +428,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                     {%- render 'icon-instagram' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                    <span>{{ 'general.social.links.instagram' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -440,7 +436,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                     {%- render 'icon-tiktok' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                    <span>{{ 'general.social.links.tiktok' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -448,7 +444,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                     {%- render 'icon-tumblr' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                    <span>{{ 'general.social.links.tumblr' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -456,7 +452,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                     {%- render 'icon-snapchat' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                    <span>{{ 'general.social.links.snapchat' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -464,7 +460,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                     {%- render 'icon-youtube' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                    <span>{{ 'general.social.links.youtube' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -472,7 +468,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                     {%- render 'icon-vimeo' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                    <span>{{ 'general.social.links.vimeo' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
