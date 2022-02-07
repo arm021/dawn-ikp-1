@@ -1,30 +1,30 @@
 {
   "sections": {
-    "164360915103aa8dee": {
-      "type": "slideshow",
+    "1644208147d4fd8796": {
+      "type": "slideshow-custom",
       "blocks": {
-        "16436091517c4504c6-0": {
+        "164420814727d65fbe-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bg-face.jpg",
+            "image": "shopify:\/\/shop_images\/group-2.png",
             "heading": "Discover Our Universe!",
             "heading_size": "large",
             "subheading": "Our beauty treatments enriched with our signature ingredient, the Shea Butter, will become your daily essential.",
-            "button_label": "shop now",
+            "button_label": "Shop now",
             "link": "shopify:\/\/collections\/all",
             "button_style_secondary": false,
             "box_align": "middle-left",
             "show_text_box": true,
-            "text_alignment": "center",
+            "text_alignment": "left",
             "image_overlay_opacity": 0,
             "color_scheme": "background-1",
             "text_alignment_mobile": "center"
           }
         },
-        "16436091517c4504c6-1": {
+        "164420814727d65fbe-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bg-pink.jpg",
+            "image": "shopify:\/\/shop_images\/jungle-flowers-small-pouch-body-milk-cream.jpg",
             "heading": "Discover Our Universe!",
             "heading_size": "large",
             "subheading": "Our beauty treatments enriched with our signature ingredient, the Shea Butter, will become your daily essential.",
@@ -33,7 +33,7 @@
             "button_style_secondary": false,
             "box_align": "middle-left",
             "show_text_box": true,
-            "text_alignment": "center",
+            "text_alignment": "left",
             "image_overlay_opacity": 0,
             "color_scheme": "background-1",
             "text_alignment_mobile": "center"
@@ -41,12 +41,11 @@
         }
       },
       "block_order": [
-        "16436091517c4504c6-0",
-        "16436091517c4504c6-1"
+        "164420814727d65fbe-0",
+        "164420814727d65fbe-1"
       ],
       "settings": {
-        "layout": "full_bleed",
-        "slide_height": "adapt_image",
+        "slide_height": "medium",
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 5,
@@ -259,40 +258,56 @@
         "padding_bottom": 36
       }
     },
-    "collage": {
-      "type": "collage",
+    "16442078802f7db179": {
+      "type": "collage-custom",
       "blocks": {
-        "c8f0eeeb-4fbb-458e-ac48-b505d1f9bce5": {
+        "c97b96eb-190e-4a06-a4e7-7cdf07c633c4": {
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/65090080-146859036388783-7905833371175479755-n.jpg",
             "image_padding": true
           }
         },
-        "2884226b-e3d1-4ab4-b141-9ba014744281": {
+        "42866917-914c-439d-b491-fe08d5f26423": {
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/66678555-385580088763213-8211713091109544756-n.jpg",
             "image_padding": true
           }
         },
-        "2db9d603-8785-4291-920f-1a34cd2df106": {
+        "e9df3457-271f-4ac6-a784-6e226b380fda": {
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/67061236-102865597659060-5222703128442344721-n.jpg",
             "image_padding": true
           }
+        },
+        "f0bf7433-13f2-40a9-9d34-7025f392d727": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/66317111-2924242140980090-193635536206961006-n.jpg",
+            "image_padding": true
+          }
+        },
+        "a384d589-fb99-437b-973a-07063d9540f4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/67548971-2311751482473833-5648329282294158340-n.jpg",
+            "image_padding": true
+          }
         }
       },
       "block_order": [
-        "c8f0eeeb-4fbb-458e-ac48-b505d1f9bce5",
-        "2884226b-e3d1-4ab4-b141-9ba014744281",
-        "2db9d603-8785-4291-920f-1a34cd2df106"
+        "c97b96eb-190e-4a06-a4e7-7cdf07c633c4",
+        "42866917-914c-439d-b491-fe08d5f26423",
+        "e9df3457-271f-4ac6-a784-6e226b380fda",
+        "f0bf7433-13f2-40a9-9d34-7025f392d727",
+        "a384d589-fb99-437b-973a-07063d9540f4"
       ],
       "settings": {
         "heading": "instagram",
         "desktop_layout": "left",
-        "mobile_layout": "column",
+        "mobile_layout": "collage",
         "color_scheme": "background-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -326,14 +341,14 @@
     }
   },
   "order": [
-    "164360915103aa8dee",
+    "1644208147d4fd8796",
     "rich_text",
     "featured_collection",
     "16436091666a31eb4a",
     "1643609877bd0f5908",
     "1643609880cc2a3143",
     "multicolumn",
-    "collage",
+    "16442078802f7db179",
     "1643610011eed6c240"
   ]
 }
