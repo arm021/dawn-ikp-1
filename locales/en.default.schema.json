@@ -843,6 +843,14 @@
               "label": "Subtext"
             }
           }
+        },
+        "social_icons": {
+          "name": "Social icons",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            }
+          }
         }
       },
       "settings": {

@@ -225,7 +225,7 @@ html.no-js .no-js-hidden {
 
 @media screen and (min-width: 750px) {
   .page-width {
-    padding: 0 5rem;
+    padding: 0 2.5rem;
   }
 
   .page-width--narrow {
@@ -242,6 +242,10 @@ html.no-js .no-js-hidden {
 }
 
 @media screen and (min-width: 990px) {
+  .page-width {
+    padding: 0 3rem;
+  }
+
   .page-width--narrow {
     max-width: 72.6rem;
     padding: 0;
@@ -475,14 +479,14 @@ blockquote {
 }
 
 .caption {
-  font-size: 1rem;
+  font-size: 0.9rem;
   letter-spacing: 0.07rem;
   line-height: calc(1 + 0.7 / var(--font-body-scale));
 }
 
 @media screen and (min-width: 750px) {
   .caption {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 

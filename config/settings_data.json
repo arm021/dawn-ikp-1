@@ -1,12 +1,5 @@
 {
   "current": {
-    "colors_accent_1": "#333333",
-    "colors_accent_2": "#e10198",
-    "colors_text": "#333333",
-    "buttons_radius": 0,
-    "buttons_shadow_blur": 0,
-    "social_facebook_link": "https:\/\/www.facebook.com\/institutkariteparis\/",
-    "social_instagram_link": "https:\/\/www.instagram.com\/institutkarite\/",
     "favicon": "shopify:\/\/shop_images\/karite-logo-1531214864.png",
     "sections": {
       "announcement-bar": {
