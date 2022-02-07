@@ -1,5 +1,9 @@
 {
   "current": {
+    "colors_accent_2": "#e10198",
+    "drawer_shadow_blur": 0,
+    "badge_position": "top right",
+    "badge_corner_radius": 40,
     "favicon": "shopify:\/\/shop_images\/karite-logo-1531214864.png",
     "sections": {
       "announcement-bar": {
@@ -63,13 +67,20 @@
               "heading": "Information",
               "menu": "information"
             }
+          },
+          "a3f89e49-ec35-4934-8d9d-1380ec1ebfce": {
+            "type": "social_icons",
+            "settings": {
+              "heading": "Social icons"
+            }
           }
         },
         "block_order": [
           "footer-2",
           "footer-0",
           "footer-1",
-          "e4751492-27cd-4534-af4c-7291adb06622"
+          "e4751492-27cd-4534-af4c-7291adb06622",
+          "a3f89e49-ec35-4934-8d9d-1380ec1ebfce"
         ],
         "settings": {
           "color_scheme": "background-1",
