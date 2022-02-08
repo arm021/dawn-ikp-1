@@ -215,7 +215,7 @@ html.no-js .no-js-hidden {
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 5vw;
 }
 
 .page-width-desktop {
@@ -734,7 +734,7 @@ summary {
 summary .icon-caret {
   position: absolute;
   height: 0.6rem;
-  right: 1.5rem;
+  right: 0.5rem;
   top: calc(50% - 0.2rem);
 }
 

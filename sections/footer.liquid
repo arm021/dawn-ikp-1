@@ -1,5 +1,6 @@
 {% comment %}theme-check-disable UndefinedObject{% endcomment %}
 {{ 'section-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 <link rel="stylesheet" href="{{ 'component-newsletter.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-list-payment.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -49,30 +50,132 @@
             assign footer_grid_class = 'grid--5-col-desktop'
           endif
         -%}
-        <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}">
+        <!-- <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}"> -->
+          <div class="footer__blocks-wrapper grid">
           {%- for block in section.blocks -%}
             <div class="footer-block grid__item{% if block.type == 'link_list' and block.settings.heading != blank %} footer-block--menu{% endif %}" {{ block.shopify_attributes }}>
-              {%- if block.settings.heading != blank -%}
-                <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
-              {%- endif -%}
-
+              
               {%- case block.type -%}
                 {%- when 'text' -%}
-                  <div class="footer-block__details-content rte">
-                    {{ block.settings.subtext }}
+                  <div class="small-hide">
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                    {%- endif -%}
+                    <div class="footer-block__details-content rte">
+                      {{ block.settings.subtext }}
+                    </div>
                   </div>
+
+                  <div class="footer-block__details-content accordion medium-hide large-up-hide">
+                    <details>
+                      <summary>
+                        <div class="summary__title">
+                          {%- if block.settings.heading != blank -%}
+                            <h4 class="accordion__title">{{- block.settings.heading | escape -}}</h4>
+                          {%- endif -%}
+                          {% render 'icon-caret' %}
+                        </div>
+                      </summary>
+                      <div class="footer-block__details-content rte accordion__content">
+                        {{ block.settings.subtext }}
+                      </div>
+                    </details>  
+                  </div>
+
+                {%- when 'text_custom' -%}
+                  <div class="small-hide">
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                    {%- endif -%}
+                    <ul class="footer-block__details-content list-unstyled">
+                      {%- if block.settings.address != blank -%}
+                        <li class="text-content">
+                          {%- render 'icon-gps' -%}{{ block.settings.address }}
+                        </li>
+                      {%- endif -%}
+                      {%- if block.settings.contact_number != blank -%}
+                        <li class="text-content">
+                          {%- render 'icon-phone' -%}{{ block.settings.contact_number }}
+                        </li> 
+                      {%- endif -%}
+                      {%- if block.settings.email_address != blank -%}
+                        <li class="text-content"> 
+                          {%- render 'icon-email' -%}{{ block.settings.email_address }}
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  </div>
+                  
+                  <div class="footer-block__details-content accordion medium-hide large-up-hide">
+                    <details>
+                      <summary>
+                        <div class="summary__title">
+                          {%- if block.settings.heading != blank -%}
+                            <h4 class="accordion__title">{{- block.settings.heading | escape -}}</h4>
+                          {%- endif -%}
+                          {% render 'icon-caret' %}
+                        </div>
+                      </summary>
+                      <ul class="footer-block__details-content list-unstyled accordion__content">
+                        {%- if block.settings.address != blank -%}
+                          <li class="text-content">
+                            {%- render 'icon-gps' -%}{{ block.settings.address }}
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.contact_number != blank -%}
+                          <li class="text-content">
+                            {%- render 'icon-phone' -%}{{ block.settings.contact_number }}
+                          </li> 
+                        {%- endif -%}
+                        {%- if block.settings.email_address != blank -%}
+                          <li class="text-content"> 
+                            {%- render 'icon-email' -%}{{ block.settings.email_address }}
+                          </li>
+                        {%- endif -%}
+                      </ul>
+                    </details>  
+                  </div>
+
                 {%- when 'link_list' -%}
                   {%- if block.settings.menu != blank and block.settings.heading != blank -%}
-                    <ul class="footer-block__details-content list-unstyled">
-                      {%- for link in block.settings.menu.links -%}
-                        <li>
-                          <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
-                            {{ link.title }}
-                          </a>
-                        </li>
-                      {%- endfor -%}
-                    </ul>
+                    <div class="small-hide">
+                      {%- if block.settings.heading != blank -%}
+                        <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                      {%- endif -%}
+                      <ul class="footer-block__details-content list-unstyled">
+                        {%- for link in block.settings.menu.links -%}
+                          <li>
+                            <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                              {{ link.title }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </div>
+
+                    <div class="footer-block__details-content accordion medium-hide large-up-hide">
+                      <details>
+                        <summary>
+                          <div class="summary__title">
+                            {%- if block.settings.heading != blank -%}
+                              <h4 class="accordion__title">{{- block.settings.heading | escape -}}</h4>
+                            {%- endif -%}
+                            {% render 'icon-caret' %}
+                          </div>
+                        </summary>
+                        <ul class="footer-block__details-content list-unstyled accordion__content">
+                          {%- for link in block.settings.menu.links -%}
+                            <li>
+                              <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                                {{ link.title }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </details>  
+                    </div>
                   {%- endif -%}
+
                 {%- when 'image' -%}
                   <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                     {%- if block.settings.image != blank -%}
@@ -90,14 +193,24 @@
                       {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                     {%- endif -%}
                   </div>
+
                 {%- when 'social_icons' -%}
+                  <div>
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                    {%- endif -%}
+                    <div class="footer-block__details-content rte">
+                      {{ block.settings.subtext }}
+                    </div>
+                  </div>
+
                   <div class="footer-block__details-content footer-block-social">
                     <ul class="footer__list-social list-unstyled list-social" role="list">
                       {%- if settings.social_twitter_link != blank -%}
                         <li class="list-social__item">
                           <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                             {%- render 'icon-twitter' -%}
-                            <span>{{ 'general.social.links.twitter' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.twitter' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -105,7 +218,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                             {%- render 'icon-facebook' -%}
-                            <span>{{ 'general.social.links.facebook' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.facebook' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -113,7 +226,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                             {%- render 'icon-pinterest' -%}
-                            <span>{{ 'general.social.links.pinterest' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.pinterest' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -121,7 +234,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                             {%- render 'icon-instagram' -%}
-                            <span>{{ 'general.social.links.instagram' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.instagram' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -129,7 +242,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                             {%- render 'icon-tiktok' -%}
-                            <span>{{ 'general.social.links.tiktok' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.tiktok' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -137,7 +250,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                             {%- render 'icon-tumblr' -%}
-                            <span>{{ 'general.social.links.tumblr' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.tumblr' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -145,7 +258,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                             {%- render 'icon-snapchat' -%}
-                            <span>{{ 'general.social.links.snapchat' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.snapchat' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -153,7 +266,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                             {%- render 'icon-youtube' -%}
-                            <span>{{ 'general.social.links.youtube' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.youtube' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -161,7 +274,7 @@
                         <li class="list-social__item">
                           <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                             {%- render 'icon-vimeo' -%}
-                            <span>{{ 'general.social.links.vimeo' | t }}</span>
+                            <span class="small-hide medium-hide">{{ 'general.social.links.vimeo' | t }}</span>
                           </a>
                         </li>
                       {%- endif -%}
@@ -222,12 +335,12 @@
         {%- endif -%}
 
         {%- if section.settings.show_social -%}
-          <ul class="footer__list-social list-unstyled list-social mobile-view" role="list">
+          <ul class="footer__list-social list-unstyled list-social medium-hide large-up-hide" role="list">
             {%- if settings.social_twitter_link != blank -%}
               <li class="list-social__item">
                 <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                   {%- render 'icon-twitter' -%}
-                  <span>{{ 'general.social.links.twitter' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.twitter' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -235,7 +348,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                   {%- render 'icon-facebook' -%}
-                  <span>{{ 'general.social.links.facebook' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.facebook' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -243,7 +356,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                   {%- render 'icon-pinterest' -%}
-                  <span>{{ 'general.social.links.pinterest' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.pinterest' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -251,7 +364,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                   {%- render 'icon-instagram' -%}
-                  <span>{{ 'general.social.links.instagram' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.instagram' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -259,7 +372,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                   {%- render 'icon-tiktok' -%}
-                  <span>{{ 'general.social.links.tiktok' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.tiktok' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -267,7 +380,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                   {%- render 'icon-tumblr' -%}
-                  <span>{{ 'general.social.links.tumblr' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.tumblr' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -275,7 +388,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                   {%- render 'icon-snapchat' -%}
-                  <span>{{ 'general.social.links.snapchat' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.snapchat' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -283,7 +396,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                   {%- render 'icon-youtube' -%}
-                  <span>{{ 'general.social.links.youtube' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.youtube' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -291,7 +404,7 @@
               <li class="list-social__item">
                 <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                   {%- render 'icon-vimeo' -%}
-                  <span>{{ 'general.social.links.vimeo' | t }}</span>
+                  <span class="small-hide medium-hide">{{ 'general.social.links.vimeo' | t }}</span>
                 </a>
               </li>
             {%- endif -%}
@@ -398,13 +511,13 @@
         </div>
 
         {%- if section.settings.show_social -%}
-          <div class="footer__list-social tablet-view">
+          <div class="footer__list-social small-hide large-up-hide">
             <ul class="footer__list-social list-unstyled list-social" role="list">
               {%- if settings.social_twitter_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_twitter_link }}" class="link list-social__link" >
                     {%- render 'icon-twitter' -%}
-                    <span>{{ 'general.social.links.twitter' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.twitter' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -412,7 +525,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_facebook_link }}" class="link list-social__link" >
                     {%- render 'icon-facebook' -%}
-                    <span>{{ 'general.social.links.facebook' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.facebook' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -420,7 +533,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_pinterest_link }}" class="link list-social__link" >
                     {%- render 'icon-pinterest' -%}
-                    <span>{{ 'general.social.links.pinterest' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.pinterest' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -428,7 +541,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="link list-social__link" >
                     {%- render 'icon-instagram' -%}
-                    <span>{{ 'general.social.links.instagram' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.instagram' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -436,7 +549,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_tiktok_link }}" class="link list-social__link" >
                     {%- render 'icon-tiktok' -%}
-                    <span>{{ 'general.social.links.tiktok' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.tiktok' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -444,7 +557,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_tumblr_link }}" class="link list-social__link" >
                     {%- render 'icon-tumblr' -%}
-                    <span>{{ 'general.social.links.tumblr' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.tumblr' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -452,7 +565,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_snapchat_link }}" class="link list-social__link" >
                     {%- render 'icon-snapchat' -%}
-                    <span>{{ 'general.social.links.snapchat' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.snapchat' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -460,7 +573,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_youtube_link }}" class="link list-social__link" >
                     {%- render 'icon-youtube' -%}
-                    <span>{{ 'general.social.links.youtube' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.youtube' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -468,7 +581,7 @@
                 <li class="list-social__item">
                   <a href="{{ settings.social_vimeo_link }}" class="link list-social__link" >
                     {%- render 'icon-vimeo' -%}
-                    <span>{{ 'general.social.links.vimeo' | t }}</span>
+                    <span class="small-hide medium-hide">{{ 'general.social.links.vimeo' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -584,6 +697,36 @@
           "id": "subtext",
           "default": "<p>Share contact information, store details, and brand content with your customers.</p>",
           "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "text_custom",
+      "name": "t:sections.footer.blocks.text_custom.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text_custom.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "address",
+          "default": "<p>Share store's address with your customers.</p>",
+          "label": "t:sections.footer.blocks.text_custom.settings.address.label"
+        },
+        {
+          "type": "richtext",
+          "id": "contact_number",
+          "default": "<p>Share store's contact number with your customers.</p>",
+          "label": "t:sections.footer.blocks.text_custom.settings.contact_number.label"
+        },
+        {
+          "type": "richtext",
+          "id": "email_address",
+          "default": "<p>Share store's contact email address with your customers.</p>",
+          "label": "t:sections.footer.blocks.text_custom.settings.email_address.label"
         }
       ]
     },

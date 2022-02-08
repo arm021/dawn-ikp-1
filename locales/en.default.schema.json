@@ -844,6 +844,23 @@
             }
           }
         },
+        "text_custom": {
+          "name": "Text custom",
+          "settings": {
+            "heading": {
+              "label": "Heading"
+            },
+            "address": {
+              "label": "Address"
+            },
+            "contact_number": {
+              "label": "Contact number"
+            },
+            "email_address": {
+              "label": "Email address"
+            }
+          }
+        },
         "social_icons": {
           "name": "Social icons",
           "settings": {
