@@ -69,3 +69,16 @@
 .newsletter-form__button .icon {
   width: 1.5rem;
 }
+
+/* Custom style */
+.newsletter__wrapper .decor {
+  display: block!important;
+  background: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/fruit2-3.png) center center / contain no-repeat;
+  position: absolute;
+  z-index: 0;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  width: 10rem;
+  left: 50%;
+  top: 83%;
+}

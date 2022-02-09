@@ -27,7 +27,7 @@
         {%- when '@app' -%}
           {% render block %}
         {%- when 'heading' -%}
-          <h2 class="section-heading" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          <h2 class="h1" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
         {%- when 'paragraph' -%}
           <div class="newsletter__subheading rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
         {%- when 'email_form' -%}
@@ -56,9 +56,9 @@
                     placeholder="{{ 'newsletter.label' | t }}"
                     required
                   >
-                  <label class="field__label" for="NewsletterForm--{{ section.id }}">
+                  <!-- <label class="field__label" for="NewsletterForm--{{ section.id }}">
                     {{ 'newsletter.label' | t }}
-                  </label>
+                  </label> -->
                   <button type="submit" class="newsletter-form__button field__button button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
                     {{ 'subscribe' | upcase | escape }}
                   </button>
