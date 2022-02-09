@@ -42,11 +42,13 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-2": {
-            "type": "text",
+          "19d8a1fc-4f0d-4dca-ab23-005ba3c47e0c": {
+            "type": "text_custom",
             "settings": {
               "heading": "Institut Karite Paris",
-              "subtext": "<p>420 rue Saint Honoré<br\/>Siège Social - Head Office<br\/>75008 Paris France<\/p><p>01 40 07 02 85<\/p><p>contact@ikparis.com<\/p>"
+              "address": "<p>420 rue Saint Honoré Siège Social - Head Office 75008 Paris France<\/p>",
+              "contact_number": "<p>01 40 07 02 85<\/p>",
+              "email_address": "<p>contact@ikparis.com<\/p>"
             }
           },
           "footer-0": {
@@ -78,7 +80,7 @@
           }
         },
         "block_order": [
-          "footer-2",
+          "19d8a1fc-4f0d-4dca-ab23-005ba3c47e0c",
           "footer-0",
           "footer-1",
           "e4751492-27cd-4534-af4c-7291adb06622",
