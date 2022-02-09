@@ -15,6 +15,11 @@
   }
 {%- endstyle -%}
 
+<div class="flag-top-container">
+  <div class="flag-top flag-top-left"></div>
+  <div class="flag-top flag-top-right"></div>
+</div>
+
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif%}">
   <div class="newsletter__wrapper color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
     {%- for block in section.blocks -%}
@@ -22,7 +27,7 @@
         {%- when '@app' -%}
           {% render block %}
         {%- when 'heading' -%}
-          <h2 class="h1" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          <h2 class="section-heading" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
         {%- when 'paragraph' -%}
           <div class="newsletter__subheading rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
         {%- when 'email_form' -%}
@@ -54,8 +59,8 @@
                   <label class="field__label" for="NewsletterForm--{{ section.id }}">
                     {{ 'newsletter.label' | t }}
                   </label>
-                  <button type="submit" class="newsletter-form__button field__button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
-                    {% render 'icon-arrow' %}
+                  <button type="submit" class="newsletter-form__button field__button button" name="commit" id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}">
+                    {{ 'subscribe' | upcase | escape }}
                   </button>
                 </div>
                 {%- if form.errors -%}
