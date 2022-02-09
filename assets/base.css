@@ -2779,6 +2779,22 @@ details-disclosure > details {
 }
 
 /* Custom style */
+.section-heading {
+  font-size: 1.3rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .section-heading {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .section-heading {
+    font-size: 1.8rem;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .grid--5-col-desktop .grid__item {
     width: calc(20% - var(--grid-desktop-horizontal-spacing) * 4 / 5);
