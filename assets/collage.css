@@ -183,3 +183,36 @@
 .collage .collage-card-spacing img {
   object-fit: contain;
 }
+
+/* Custom style */
+.collage-custom .collage-wrapper-title svg {
+  height: calc(var(--font-heading-scale) * 2rem);
+  vertical-align: middle;
+}
+
+.collage-custom .collage {
+  grid-template-columns: repeat(2, minmax(0, 2fr));
+}
+
+@media screen and (min-width:750px) {
+  .collage-custom .collage {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width:990px) {
+  .collage-custom .collage {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width:749px) {
+  .collage-custom .collage {
+    grid-gap: 1rem;
+  }
+
+  .collage-custom .collage .collage__item:nth-child(5) {
+    display: none;
+  }
+}
+
