@@ -190,12 +190,13 @@
         "padding_bottom": 36
       }
     },
-    "1643609880cc2a3143": {
-      "type": "featured-blog",
+    "16446881866308f5a5": {
+      "type": "featured-blog-custom",
       "settings": {
-        "heading": "Blog posts",
+        "logo": "shopify:\/\/shop_images\/cropped-lejournal-1.jpg",
+        "logo_width": 100,
         "blog": "journal",
-        "post_limit": 3,
+        "post_limit": 2,
         "color_scheme": "background-1",
         "show_image": true,
         "show_date": true,
@@ -246,6 +247,9 @@
       ],
       "settings": {
         "title": "",
+        "full_width": true,
+        "show_flag_top": false,
+        "show_flag_bottom": false,
         "image_width": "half",
         "image_ratio": "adapt",
         "column_alignment": "center",
@@ -335,6 +339,8 @@
       "settings": {
         "color_scheme": "background-2",
         "full_width": false,
+        "show_flag_top": false,
+        "show_flag_bottom": false,
         "padding_top": 100,
         "padding_bottom": 60
       }
@@ -346,7 +352,7 @@
     "featured_collection",
     "16436091666a31eb4a",
     "1643609877bd0f5908",
-    "1643609880cc2a3143",
+    "16446881866308f5a5",
     "multicolumn",
     "16442078802f7db179",
     "1643610011eed6c240"
