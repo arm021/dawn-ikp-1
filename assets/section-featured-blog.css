@@ -79,3 +79,14 @@
     }
   }
 }
+
+/* Custom style */
+.blog .title {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog .card__content {
+  text-align: center;
+}
