@@ -658,6 +658,17 @@
         "name": "Blog posts"
       }
     },
+    "featured-blog-custom": {
+      "name": "Blog posts non-slider custom",
+      "settings": {
+        "logo": {
+          "label": "Blog heading logo"
+        }
+      },
+      "presets": {
+        "name": "Blog posts non-slider custom"
+      }
+    },
     "featured-collection": {
       "name": "Featured collection",
       "settings": {
@@ -1999,6 +2010,15 @@
         "title": {
           "label": "Heading"
         },
+        "full_width": {
+          "label": "Make section full width"
+        },
+        "show_flag_top": {
+          "label": "Add a flag styled border at the top of the section"
+        },
+        "show_flag_bottom": {
+          "label": "Add a flag styled border at the bottom of the section"
+        },
         "image_width": {
           "label": "Image width",
           "options__1": {
@@ -2103,6 +2123,12 @@
         },
         "full_width": {
           "label": "Make section full width"
+        },
+        "show_flag_top": {
+          "label": "Add a flag styled border at the top of the section"
+        },
+        "show_flag_bottom": {
+          "label": "Add a flag styled border at the bottom of the section"
         },
         "paragraph": {
           "content": "Each email subscription creates a customer account. [Learn more](https:\/\/help.shopify.com\/en\/manual\/customers)"

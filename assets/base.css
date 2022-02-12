@@ -2823,6 +2823,28 @@ details-disclosure > details {
   }
 }
 
+.flag-bottom-container {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  bottom: 24px;
+  margin: 0 0 -25px;
+}
+
+@media screen and (min-width: 750px) {
+  .flag-bottom-container {
+    bottom: 49px;
+    margin: 0 0 -50px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .flag-bottom-container {
+    bottom: 74px;
+    margin: 0 0 -75px;
+  }
+}
+
 .flag-top, .flag-bottom {
   display: block !important;
   width: 50%;

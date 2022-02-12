@@ -15,10 +15,12 @@
   }
 {%- endstyle -%}
 
-<div class="flag-top-container">
-  <div class="flag-top flag-top-left"></div>
-  <div class="flag-top flag-top-right"></div>
-</div>
+{% if section.settings.show_flag_top == true %}  
+  <div class="flag-top-container">
+    <div class="flag-top flag-top-left"></div>
+    <div class="flag-top flag-top-right"></div>
+  </div>
+{% endif %}
 
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif%}">
   <div class="newsletter__wrapper color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
@@ -77,6 +79,13 @@
   </div>
 </div>
 
+{% if section.settings.show_flag_bottom == true %}
+  <div class="flag-bottom-container">
+    <div class="flag-bottom flag-bottom-left"></div>
+    <div class="flag-bottom flag-bottom-right"></div>
+  </div>
+{% endif %}
+
 {% schema %}
 {
   "name": "t:sections.newsletter.name",
@@ -116,6 +125,18 @@
       "id": "full_width",
       "default": true,
       "label": "t:sections.newsletter.settings.full_width.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flag_top",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.show_flag_top.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flag_bottom",
+      "default": false,
+      "label": "t:sections.multicolumn.settings.show_flag_bottom.label"
     },
     {
       "type": "paragraph",
