@@ -194,7 +194,7 @@
       "type": "featured-blog-custom",
       "settings": {
         "logo": "shopify:\/\/shop_images\/cropped-lejournal-1.jpg",
-        "logo_width": 100,
+        "logo_width": 250,
         "blog": "journal",
         "post_limit": 2,
         "color_scheme": "background-1",
