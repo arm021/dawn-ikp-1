@@ -1288,6 +1288,9 @@
             "label": "Right"
           },
           "label": "Mobile content alignment"
+        },
+        "border_bottom": {
+          "label": "Add a border\/divider at the bottom of the section"
         }
       },
       "blocks": {

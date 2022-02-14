@@ -140,3 +140,32 @@
     }
   }
 }
+
+/* Custom style */
+.blog__non-slider .articles-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__non-slider .articles-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 2rem;
+  }
+}
+
+.blog__non-slider .blog__post.article {
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__non-slider .blog__post.article .card__information {
+    margin-top: 3rem;
+  }
+}
+
+.blog__non-slider .full-unstyled-link.read-more {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}

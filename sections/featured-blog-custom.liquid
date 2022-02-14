@@ -29,7 +29,7 @@
   endif
 -%}
 <div class="blog isolate color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
-  <div class="page-width-desktop{% if posts_displayed < 2 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
+  <div class="page-width{% if posts_displayed < 2 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
     <div class="title{% if section.settings.logo == blank %} title-wrapper-with-link--no-heading{% endif %} {% if posts_displayed > 2 %}title-wrapper--self-padded-tablet-down{% else %}title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
       {%- if section.settings.logo != blank -%}
 				{%- assign image_size = section.settings.logo_width | append: 'x' -%}
@@ -47,18 +47,18 @@
         <a href="{{ section.settings.blog.url }}"
           class="link underlined-link large-up-hide"
         >
-          {{ 'sections.featured_blog.view_all' | t }}
+          {{ 'sections.featured_blog.view_all' | t | upcase }}
         </a>
       {%- endif -%}
     </div>
     {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
-      <div class="test">
+      <div class="blog__non-slider">
         <ul id="Blog-{{ section.id }}"
-          class="blog__posts articles-wrapper grid grid--peek grid--2-col-tablet grid--4-col-desktop"
+          class="blog__posts articles-wrapper"
           role="list"
         >
           {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
-            <li id="Article-{{ section.id }}-{{ forloop.index }}" class="blog__post grid__item article">
+            <li id="Article-{{ section.id }}-{{ forloop.index }}" class="blog__post article">
               {% render 'article-card', blog: section.settings.blog, article: article, media_aspect_ratio: 1.66, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author, show_excerpt: true %}
             </li>
           {%- endfor -%}
@@ -66,9 +66,9 @@
 			</div>
 
       {%- if section.settings.show_view_all -%}
-        <div class="blog__view-all center small-hide medium-hide">
+        <div class="blog__view-all center">
           <a href="{{ section.settings.blog.url }}" class="blog__button button">
-            {{ 'sections.featured_blog.view_all' | t }}
+            {{ 'sections.featured_blog.view_all' | t | upcase }}
           </a>
         </div>
       {%- endif -%}
