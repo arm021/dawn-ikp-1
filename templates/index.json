@@ -101,6 +101,13 @@
     "16436091666a31eb4a": {
       "type": "image-banner",
       "blocks": {
+        "6161de34-191b-4381-8abe-294d49080297": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo-hipanema.png",
+            "logo_width": 100
+          }
+        },
         "1643609166186cecc4-0": {
           "type": "heading",
           "settings": {
@@ -128,6 +135,7 @@
         }
       },
       "block_order": [
+        "6161de34-191b-4381-8abe-294d49080297",
         "1643609166186cecc4-0",
         "1643609166186cecc4-1",
         "1643609166186cecc4-2"
@@ -138,12 +146,12 @@
         "image_height": "medium",
         "adapt_height_first_image": false,
         "desktop_content_position": "middle-left",
-        "show_text_box": true,
+        "show_text_box": false,
         "desktop_content_alignment": "left",
         "color_scheme": "inverse",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": true,
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "1643609877bd0f5908": {
@@ -178,7 +186,6 @@
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/jungle-flowers-small-pouch-body-milk-cream.jpg",
-        "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "desktop_content_position": "middle",
