@@ -86,14 +86,16 @@
           {%- when 'logo' -%}
             {%- if block.settings.logo != blank -%}
             {%- assign image_size = block.settings.logo_width | append: 'x' -%}
-              <img srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                src="{{ block.settings.logo | img_url: image_size }}"
-                loading="lazy"
-                class="header__heading-logo"
-                width="{{ block.settings.logo.width }}"
-                height="{{ block.settings.logo.height }}"
-                alt="{{ block.settings.logo.alt | escape }}"
-              >
+              <div class="sponsor_logo">
+                <img srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                  src="{{ block.settings.logo | img_url: image_size }}"
+                  loading="lazy"
+                  class="header__heading-logo"
+                  width="{{ block.settings.logo.width }}"
+                  height="{{ block.settings.logo.height }}"
+                  alt="{{ block.settings.logo.alt | escape }}"
+                >
+              </div>
             {%- endif -%}
           {%- when 'heading' -%}
             <h2 class="banner__heading {% if block.settings.heading_size == 'medium' %}h1{% else %}h0{% endif %}" {{ block.shopify_attributes }}>
