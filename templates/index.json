@@ -132,13 +132,21 @@
             "button_link_2": "",
             "button_style_secondary_2": false
           }
+        },
+        "25ee5e36-4088-49af-9195-1db86351cbb4": {
+          "type": "text",
+          "settings": {
+            "text": "*Within stocks limits",
+            "text_style": "body"
+          }
         }
       },
       "block_order": [
         "6161de34-191b-4381-8abe-294d49080297",
         "1643609166186cecc4-0",
         "1643609166186cecc4-1",
-        "1643609166186cecc4-2"
+        "1643609166186cecc4-2",
+        "25ee5e36-4088-49af-9195-1db86351cbb4"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/group-3.jpg",
