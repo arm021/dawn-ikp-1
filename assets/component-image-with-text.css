@@ -329,6 +329,10 @@
 }
 
 /* Custom style */
+.image-with-text .media > img {
+  object-fit: contain;
+}
+
 .image-with-text .grid.border--bottom {
   border-bottom: solid 0.1rem rgba(var(--color-foreground), 0.08);
 }
