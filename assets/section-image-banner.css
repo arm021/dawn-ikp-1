@@ -434,7 +434,7 @@
 }
 
 .banner__box > * + .banner__buttons {
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 /* Custom style */
@@ -443,10 +443,23 @@
 }
 
 .sponsor_logo {
+  display: inline-block;
   width: fit-content;
 }
 
-.banner.banner--desktop-transparent:not(.banner--mobile-bottom) .banner__buttons .button {
+.banner:not(.banner--mobile-bottom) .banner__buttons .button {
   color: rgba(var(--color-button), var(--alpha-button-background));
   background-color: rgb(var(--color-button-text));
+}
+
+@media screen and (min-width: 750px) {
+  .banner__box > * + .banner__buttons {
+    margin-top: 5rem;
+  }
+
+  .banner--desktop-transparent.banner--mobile-bottom .banner__buttons .button,
+  .banner--desktop-transparent:not(.banner--mobile-bottom) .banner__buttons .button {
+    color: rgba(var(--color-button), var(--alpha-button-background));
+    background-color: rgb(var(--color-button-text));
+  }
 }
