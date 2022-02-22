@@ -87,19 +87,22 @@
         "1645196327e1193e88-0": {
           "type": "featured_collection",
           "settings": {
-            "collection": "face"
+            "collection": "face",
+            "colors": "#e8f0f9"
           }
         },
         "1645196327e1193e88-1": {
           "type": "featured_collection",
           "settings": {
-            "collection": "body"
+            "collection": "body",
+            "colors": "#ffebf0"
           }
         },
         "1645196327e1193e88-2": {
           "type": "featured_collection",
           "settings": {
-            "collection": "hair"
+            "collection": "hair",
+            "colors": "#e7faf1"
           }
         }
       },
@@ -109,7 +112,7 @@
         "1645196327e1193e88-2"
       ],
       "settings": {
-        "title": "Collections",
+        "title": "",
         "image_ratio": "square",
         "color_scheme": "background-1",
         "swipe_on_mobile": false,
