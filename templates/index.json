@@ -88,21 +88,27 @@
           "type": "featured_collection",
           "settings": {
             "collection": "face",
-            "colors": "#e8f0f9"
+            "colors": "#e8f0f9",
+            "decor_top": false,
+            "decor_bottom": false
           }
         },
         "1645196327e1193e88-1": {
           "type": "featured_collection",
           "settings": {
             "collection": "body",
-            "colors": "#ffebf0"
+            "colors": "#ffebf0",
+            "decor_top": false,
+            "decor_bottom": true
           }
         },
         "1645196327e1193e88-2": {
           "type": "featured_collection",
           "settings": {
             "collection": "hair",
-            "colors": "#e7faf1"
+            "colors": "#e7faf1",
+            "decor_top": true,
+            "decor_bottom": false
           }
         }
       },
