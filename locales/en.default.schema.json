@@ -605,6 +605,12 @@
             },
             "colors": {
               "label": "Collection card background color"
+            },
+            "decor_top": {
+              "label": "Add image decor at the top of the collection card"
+            },
+            "decor_bottom": {
+              "label": "Add image decor at the bottom of the collection card"
             }
           }
         }

@@ -43,6 +43,12 @@
         -%}
         {%- for block in section.blocks -%}
           <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="collection-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}" {{ block.shopify_attributes }}>           
+            {%- if block.settings.decor_top -%}
+              <div class="decor-top" style="display: block; position: relative;"></div>
+            {%- endif -%}
+            {%- if block.settings.decor_bottom -%}
+              <div class="decor-bottom" style="display: block; position: relative;"></div>
+            {%- endif -%}
             {% render 'card-collection', card_collection: block.settings.collection , media_aspect_ratio: section.settings.image_ratio, columns: columns, background_color: block.settings.colors %}
           </li>
         {%- endfor -%}
@@ -184,6 +190,18 @@
           "type": "color",
           "id": "colors",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.colors.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "decor_top",
+          "default": false,
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.decor_top.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "decor_bottom",
+          "default": false,
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.decor_bottom.label"
         }
       ]
     }
