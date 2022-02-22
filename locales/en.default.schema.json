@@ -602,6 +602,9 @@
           "settings": {
             "collection": {
               "label": "Collection"
+            },
+            "colors": {
+              "label": "Collection card background color"
             }
           }
         }
@@ -1132,6 +1135,18 @@
                 "label": "Large"
               },
               "label": "Heading size"
+            }
+          }
+        },
+        "logo": {
+          "name": "Logo",
+          "settings": {
+            "logo": {
+              "label": "Logo image"
+            },
+            "logo_width": {
+              "unit": "px",
+              "label": "Custom logo width"
             }
           }
         },

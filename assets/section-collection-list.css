@@ -73,3 +73,28 @@
 .collection-list-view-all {
   margin-top: 2rem;
 }
+
+/* Custom style */
+.collection-list .card__media .media {
+  transform: translateY(4rem);
+  overflow: unset;
+}
+
+.collection-list .card__media .media img {
+  object-fit: contain;
+  transform: translateY(-8rem);
+  padding: 3rem;
+}
+
+.collection-list .card__content {
+  position: absolute;
+  top: 0;
+  bottom: -25rem;
+}
+
+.collection-list .card__content .card__heading {
+  text-shadow: 0px 0px 2px rgba(var(--color-base-text));
+}
+
+
+
