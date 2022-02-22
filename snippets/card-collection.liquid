@@ -62,7 +62,7 @@
       {%- endif -%}
       <div class="card__content">        
         <div class="card__information">
-          <h3 class="card__heading">
+          <h3 class="card__heading h2">
             <a href="{{ card_collection.url }}" class="full-unstyled-link">
               {%- if card_collection.title != blank -%}
                 {{- card_collection.title | escape -}}
@@ -83,10 +83,10 @@
     {% if settings.card_style == 'card' or card_collection.featured_image %} 
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading center">
+          <h3 class="card__heading center h1">
             <a href="{{ card_collection.url }}" class="full-unstyled-link">
               {%- if card_collection.title != blank -%}
-                <h2>{{- card_collection.title | escape -}}</h2>
+                {{- card_collection.title | escape -}}
               {%- else -%}
                 {{ 'onboarding.collection_title' | t }}
               {%- endif -%}
