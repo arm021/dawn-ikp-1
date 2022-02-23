@@ -1,0 +1,33 @@
+<div class="stamp center">
+	<p>N°1<br>Shea Butter<br>Cosmetic Brand</p>
+</div>
+
+{% style %}
+	.stamp {
+		display: flex;
+    justify-content: center;
+    align-items: center;
+		background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/round-border.png?907);
+		width: 220px;
+    height: 220px;
+    margin: auto;
+	}
+
+	@media screen and (min-width: 750px) {
+		.stamp {
+			margin: 0 5% 0 auto;
+		}
+	}
+
+	@media screen and (min-width: 990px) {
+		.stamp {
+			margin: 0 20% 0 auto;
+		}
+	}
+
+	.stamp p {
+    font-weight: 600;
+    line-height: 1.5;
+    color: #00662e;
+	}
+{% endstyle %}
