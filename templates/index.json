@@ -53,6 +53,15 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "1645624395270c9d5f": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'award-stamp' %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -410,6 +419,7 @@
   },
   "order": [
     "1644208147d4fd8796",
+    "1645624395270c9d5f",
     "rich_text",
     "16451963273ece7d1f",
     "featured_collection",
