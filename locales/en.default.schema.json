@@ -2154,6 +2154,9 @@
         "show_flag_bottom": {
           "label": "Add a flag styled border at the bottom of the section"
         },
+        "decor_fruit": {
+          "label": "Add a fruit image decoration at the input box"
+        },
         "paragraph": {
           "content": "Each email subscription creates a customer account. [Learn more](https:\/\/help.shopify.com\/en\/manual\/customers)"
         }

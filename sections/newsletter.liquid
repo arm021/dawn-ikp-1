@@ -73,6 +73,9 @@
                 <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
               {%- endif -%}
             {% endform %}
+            {%- if section.settings.decor_fruit -%}
+              <div class="decor-fruit" style="display: block; position: relative;"></div>
+            {%- endif -%}
           </div>
       {%- endcase -%}
     {%- endfor -%}
@@ -130,13 +133,19 @@
       "type": "checkbox",
       "id": "show_flag_top",
       "default": false,
-      "label": "t:sections.multicolumn.settings.show_flag_top.label"
+      "label": "t:sections.newsletter.settings.show_flag_top.label"
     },
     {
       "type": "checkbox",
       "id": "show_flag_bottom",
       "default": false,
-      "label": "t:sections.multicolumn.settings.show_flag_bottom.label"
+      "label": "t:sections.newsletter.settings.show_flag_bottom.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "decor_fruit",
+      "default": false,
+      "label": "t:sections.newsletter.settings.decor_fruit.label"
     },
     {
       "type": "paragraph",

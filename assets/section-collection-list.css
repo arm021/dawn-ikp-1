@@ -81,7 +81,7 @@
 
 .collection-list .collection-list__item .decor-top::before {
   content: "";
-  background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/fruit2-2.png?829);
+  background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/fruit2-2.png);
   position: absolute;
   width: 100%;
   height: 45vw;
@@ -94,7 +94,7 @@
 
 .collection-list .collection-list__item .decor-bottom::before {
   content: "";
-  background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bitmap.png?647);
+  background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bitmap.png);
   position: absolute;
   width: 100%;
   height: 45vw;

@@ -11,12 +11,13 @@
   .newsletter-form {
     align-items: flex-start;
     margin: 0 auto;
-    max-width: 50rem;
+    max-width: 70rem;
   }
 }
 
 .newsletter-form__field-wrapper {
   width: 100%;
+  background-color: rgb(var(--color-base-background-1));
 }
 
 .newsletter-form__field-wrapper .field__input {
@@ -25,6 +26,7 @@
 
 .newsletter-form__field-wrapper .field {
   z-index: 0;
+  padding: 1rem;
 }
 
 .newsletter-form__message {
@@ -63,7 +65,8 @@
 
 .newsletter-form__button:not(:focus-visible):not(.focused) {
   box-shadow: inherit;
-  background-color: inherit;
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-base-background-1));
 }
 
 .newsletter-form__button .icon {
@@ -71,6 +74,28 @@
 }
 
 /* Custom style */
+.newsletter .newsletter__wrapper .field {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+@media screen and (min-width: 750px) {
+  .newsletter .newsletter__wrapper .field {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.newsletter .newsletter__wrapper .field input {
+  height: auto;
+}
+
+.newsletter .newsletter__wrapper .field__button {
+  position: relative;
+  width: auto;
+  padding: 2.5rem 0;
+  letter-spacing: 0.4rem;
+}
+
 .newsletter__wrapper .decor {
   display: block!important;
   background: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/fruit2-3.png) center center / contain no-repeat;
@@ -81,4 +106,22 @@
   width: 10rem;
   left: 50%;
   top: 83%;
+}
+
+.newsletter .newsletter__wrapper .decor-fruit::before {
+  content: "";
+  background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/fruit2-3.png);
+  position: absolute;
+  width: 100%;
+  height: 10rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-35%);
+  z-index: -1;
+}
+
+@media screen and (min-width: 750px) {
+  .newsletter .newsletter__wrapper .decor-fruit::before {
+    height: 15rem;
+  }
 }
