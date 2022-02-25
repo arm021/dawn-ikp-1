@@ -412,8 +412,9 @@
         "full_width": false,
         "show_flag_top": true,
         "show_flag_bottom": false,
+        "decor_fruit": true,
         "padding_top": 100,
-        "padding_bottom": 60
+        "padding_bottom": 100
       }
     }
   },
