@@ -92,7 +92,6 @@ slideshow-component.page-width .slideshow__text {
   }
 }
 
-
 .slideshow:not(.banner--mobile-bottom) .slideshow__text-wrapper {
   height: 100%;
 }
@@ -197,4 +196,19 @@ slideshow-component:not(.page-width) .slider-buttons {
   visibility: hidden;
   opacity: 0;
   transform: scale(.8)
+}
+
+/* Custom style */
+.banner--banner__box-transparent {
+  background-color: transparent;
+  color: rgb(var(--color-base-text));
+}
+
+.slideshow__text.banner--banner__box-transparent .banner__buttons .button {
+  background-color: rgb(var(--color-base-text));
+  color: rgb(var(--color-base-background-1));
+}
+
+.media__box {
+  position: relative;
 }

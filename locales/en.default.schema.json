@@ -2700,11 +2700,17 @@
         "change_slides_speed": {
           "label": "Change slides every"
         },
+        "show_banner_box": {
+          "label": "Show slide text container"
+        },
         "mobile": {
           "content": "Mobile layout"
         },
         "show_text_below": {
           "label": "Show content below images on mobile"
+        },
+        "show_flag_bottom": {
+          "label": "Add a flag styled border at the bottom of the section"
         },
         "accessibility": {
           "content": "Accessibility",
@@ -2716,6 +2722,9 @@
         "slide": {
           "name": "Slide",
           "settings": {
+            "bg_image": {
+              "label": "Background image"
+            },
             "image": {
               "label": "Image"
             },
@@ -2777,9 +2786,6 @@
               "options__9": {
                 "label": "Bottom right"
               }
-            },
-            "show_text_box": {
-              "label": "Show container on desktop"
             },
             "text_alignment": {
               "label": "Desktop content alignment",

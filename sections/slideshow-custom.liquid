@@ -21,15 +21,102 @@
         id="Slide-{{ section.id }}-{{ forloop.index }}"
         {{ block.shopify_attributes }}
         role="group"
-        aria-roledescription="{{ 'sections.slideshow-custom.slide' | t }}"
+        aria-roledescription="{{ 't:sections.slideshow-custom.blocks.slide.name' | t }}"
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length}}"
         tabindex="-1"
       >
-        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
-          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        <div class="slideshow__media banner__media media{% if block.settings.bg_image == blank %} placeholder{% endif %}">
+          {%- if block.settings.bg_image -%}
+            <img
+              srcset="{%- if block.settings.bg_image.width >= 375 -%}{{ block.settings.bg_image | img_url: '375x' }} 375w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 550 -%}{{ block.settings.bg_image | img_url: '550x' }} 550w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 750 -%}{{ block.settings.bg_image | img_url: '750x' }} 750w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 1100 -%}{{ block.settings.bg_image | img_url: '1100x' }} 1100w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 1500 -%}{{ block.settings.bg_image | img_url: '1500x' }} 1500w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 1780 -%}{{ block.settings.bg_image | img_url: '1780x' }} 1780w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 2000 -%}{{ block.settings.bg_image | img_url: '2000x' }} 2000w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 3000 -%}{{ block.settings.bg_image | img_url: '3000x' }} 3000w,{%- endif -%}
+              {%- if block.settings.bg_image.width >= 3840 -%}{{ block.settings.bg_image | img_url: '3840x' }} 3840w,{%- endif -%}
+              {{ block.settings.bg_image | img_url: 'master' }} {{ block.settings.bg_image.width }}w"
+              sizes="100vw"
+              src="{{ block.settings.bg_image | img_url: '1500x' }}"
+              loading="lazy"
+              alt="{{ block.settings.bg_image.alt | escape }}"
+              width="{{ block.settings.bg_image.width }}"
+              height="{{ block.settings.bg_image.width | divided_by: block.settings.bg_image.aspect_ratio | round }}"
+            >
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
         </div>
-        <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}">
-          <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
+        <!-- <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if block.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if block.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
+          <div class="image-with-text__media-item image-with-text__media-item--{{ block.settings.desktop_image_width }} image-with-text__media-item--{{ block.settings.desktop_content_position }} grid__item">
+            <div class="image-with-text__media global-media-settings {% if block.settings.image != blank %}media{% else %}image-with-text__media--placeholder placeholder{% endif %}"
+              {% if block.settings.image != blank %} style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"{% endif %}
+            >
+              {%- if block.settings.image != blank -%}
+                <img
+                  srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+                    {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+                    {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                    {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                    {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+                    {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                    {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
+                  src="{{ block.settings.image | img_url: '1500x' }}"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="image-with-text__text-item grid__item">
+            <div class="image-with-text__content image-with-text__content--{{ block.settings.desktop_content_position }} image-with-text__content--desktop-{{ block.settings.desktop_content_alignment }} image-with-text__content--mobile-{{ block.settings.mobile_content_alignment }} image-with-text__content--{{ block.settings.height }} content-container">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="banner__heading{% if block.settings.heading_size == 'medium' %} h1{% elsif block.settings.heading_size == 'large' %} h0{% endif %}">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.subheading != blank -%}
+                <div class="banner__text" {{ block.shopify_attributes }}>
+                  <span>{{ block.settings.subheading | escape }}</span>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.button_label != blank -%}
+                <div class="banner__buttons">
+                  <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}">{{ block.settings.button_label | escape }}</a>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div> -->
+        <div class="slider-content grid grid--gapless grid--1-col grid--{% if block.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
+          <div class="slideshow__media banner__box banner__media{% if block.settings.bg_image == blank %} placeholder{% endif %} grid__item">
+            {%- if block.settings.image != blank -%}
+              <img
+                srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+                  {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+                  {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                  {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
+                src="{{ block.settings.image | img_url: '1500x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          
+          <div class="slideshow__text banner__box slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }} grid__item">
             {%- if block.settings.heading != blank -%}
               <h2 class="banner__heading{% if block.settings.heading_size == 'medium' %} h1{% elsif block.settings.heading_size == 'large' %} h0{% endif %}">{{ block.settings.heading | escape }}</h2>
             {%- endif -%}
@@ -44,30 +131,6 @@
               </div>
             {%- endif -%}
           </div>
-        </div>
-        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
-          {%- if block.settings.image -%}
-            <img
-              srcset="{%- if block.settings.image.width >= 375 -%}{{ block.settings.image | img_url: '375x' }} 375w,{%- endif -%}
-              {%- if block.settings.image.width >= 550 -%}{{ block.settings.image | img_url: '550x' }} 550w,{%- endif -%}
-              {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
-              {%- if block.settings.image.width >= 1100 -%}{{ block.settings.image | img_url: '1100x' }} 1100w,{%- endif -%}
-              {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
-              {%- if block.settings.image.width >= 1780 -%}{{ block.settings.image | img_url: '1780x' }} 1780w,{%- endif -%}
-              {%- if block.settings.image.width >= 2000 -%}{{ block.settings.image | img_url: '2000x' }} 2000w,{%- endif -%}
-              {%- if block.settings.image.width >= 3000 -%}{{ block.settings.image | img_url: '3000x' }} 3000w,{%- endif -%}
-              {%- if block.settings.image.width >= 3840 -%}{{ block.settings.image | img_url: '3840x' }} 3840w,{%- endif -%}
-              {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
-              sizes="100vw"
-              src="{{ block.settings.image | img_url: '1500x' }}"
-              loading="lazy"
-              alt="{{ block.settings.image.alt | escape }}"
-              width="{{ block.settings.image.width }}"
-              height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round }}"
-            >
-          {%- else -%}
-            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
         </div>
       </div>
     {%- endfor -%}
@@ -116,6 +179,13 @@
   {%- endif -%}
 
 </slideshow-component>
+
+{% if section.settings.show_flag_bottom == true %}
+  <div class="flag-bottom-container">
+    <div class="flag-bottom flag-bottom-left"></div>
+    <div class="flag-bottom flag-bottom-right"></div>
+  </div>
+{% endif %}
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
@@ -188,6 +258,23 @@
       "default": 5
     },
     {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "t:sections.image-with-text.settings.layout.options__1.label"
+        },
+        {
+          "value": "text_first",
+          "label": "t:sections.image-with-text.settings.layout.options__2.label"
+        }
+      ],
+      "default": "image_first",
+      "label": "t:sections.image-with-text.settings.layout.label",
+      "info": "t:sections.image-with-text.settings.layout.info"
+    },
+    {
       "type": "header",
       "content": "t:sections.slideshow-custom.settings.mobile.content"
     },
@@ -200,6 +287,12 @@
     {
       "type": "header",
       "content": "t:sections.slideshow-custom.settings.accessibility.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flag_bottom",
+      "default": false,
+      "label": "t:sections.slideshow-custom.settings.show_flag_bottom.label"
     },
     {
       "type": "text",
@@ -217,8 +310,74 @@
       "settings": [
         {
           "type": "image_picker",
+          "id": "bg_image",
+          "label": "t:sections.slideshow-custom.blocks.slide.settings.bg_image.label"
+        },
+        {
+          "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow-custom.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "select",
+          "id": "desktop_image_width",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:sections.image-with-text.settings.desktop_image_width.options__1.label"
+            },
+            {
+              "value": "medium",
+              "label": "t:sections.image-with-text.settings.desktop_image_width.options__2.label"
+            },
+            {
+              "value": "large",
+              "label": "t:sections.image-with-text.settings.desktop_image_width.options__3.label"
+            }
+          ],
+          "default": "medium",
+          "label": "t:sections.image-with-text.settings.desktop_image_width.label",
+          "info": "t:sections.image-with-text.settings.desktop_image_width.info"
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_position",
+          "options": [
+            {
+              "value": "top",
+              "label": "t:sections.image-with-text.settings.desktop_content_position.options__1.label"
+            },
+            {
+              "value": "middle",
+              "label": "t:sections.image-with-text.settings.desktop_content_position.options__2.label"
+            },
+            {
+              "value": "bottom",
+              "label": "t:sections.image-with-text.settings.desktop_content_position.options__3.label"
+            }
+          ],
+          "default": "top",
+          "label": "t:sections.image-with-text.settings.desktop_content_position.label"
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__3.label"
+            }
+          ],
+          "default": "left",
+          "label": "t:sections.image-with-text.settings.desktop_content_alignment.label"
         },
         {
           "type": "text",
@@ -316,12 +475,6 @@
           "info": "t:sections.slideshow-custom.blocks.slide.settings.box_align.info"
         },
         {
-          "type": "checkbox",
-          "id": "show_text_box",
-          "label": "t:sections.slideshow-custom.blocks.slide.settings.show_text_box.label",
-          "default": true
-        },
-        {
           "type": "select",
           "id": "text_alignment",
           "options": [
@@ -350,35 +503,6 @@
           "unit": "%",
           "label": "t:sections.slideshow-custom.blocks.slide.settings.image_overlay_opacity.label",
           "default": 0
-        },
-        {
-          "type": "select",
-          "id": "color_scheme",
-          "options": [
-            {
-              "value": "accent-1",
-              "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.options__1.label"
-            },
-            {
-              "value": "accent-2",
-              "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.options__2.label"
-            },
-            {
-              "value": "background-1",
-              "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.options__3.label"
-            },
-            {
-              "value": "background-2",
-              "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.options__4.label"
-            },
-            {
-              "value": "inverse",
-              "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.options__5.label"
-            }
-          ],
-          "default": "background-1",
-          "label": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.label",
-          "info": "t:sections.slideshow-custom.blocks.slide.settings.color_scheme.info"
         },
         {
           "type": "header",
