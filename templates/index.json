@@ -6,7 +6,11 @@
         "164420814727d65fbe-0": {
           "type": "slide",
           "settings": {
+            "bg_image": "shopify:\/\/shop_images\/bg-teal.jpg",
             "image": "shopify:\/\/shop_images\/group-2.png",
+            "desktop_image_width": "medium",
+            "desktop_content_position": "top",
+            "desktop_content_alignment": "left",
             "heading": "Discover Our Universe!",
             "heading_size": "large",
             "subheading": "Our beauty treatments enriched with our signature ingredient, the Shea Butter, will become your daily essential.",
@@ -14,17 +18,19 @@
             "link": "shopify:\/\/collections\/all",
             "button_style_secondary": false,
             "box_align": "middle-left",
-            "show_text_box": true,
             "text_alignment": "left",
             "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
             "text_alignment_mobile": "center"
           }
         },
         "164420814727d65fbe-1": {
           "type": "slide",
           "settings": {
+            "bg_image": "shopify:\/\/shop_images\/bg-pink.jpg",
             "image": "shopify:\/\/shop_images\/jungle-flowers-small-pouch-body-milk-cream.jpg",
+            "desktop_image_width": "medium",
+            "desktop_content_position": "top",
+            "desktop_content_alignment": "left",
             "heading": "Discover Our Universe!",
             "heading_size": "large",
             "subheading": "Our beauty treatments enriched with our signature ingredient, the Shea Butter, will become your daily essential.",
@@ -32,10 +38,8 @@
             "link": "shopify:\/\/collections",
             "button_style_secondary": false,
             "box_align": "middle-left",
-            "show_text_box": true,
             "text_alignment": "left",
             "image_overlay_opacity": 0,
-            "color_scheme": "background-1",
             "text_alignment_mobile": "center"
           }
         }
@@ -49,7 +53,9 @@
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 5,
+        "layout": "text_first",
         "show_text_below": true,
+        "show_flag_bottom": false,
         "accessibility_info": "Slideshow about our brand"
       }
     },
@@ -253,7 +259,6 @@
         "layout": "image_first",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
         "color_scheme": "background-1",
         "mobile_content_alignment": "center",
         "padding_top": 36,
