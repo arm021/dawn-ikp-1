@@ -2700,8 +2700,18 @@
         "change_slides_speed": {
           "label": "Change slides every"
         },
-        "show_banner_box": {
-          "label": "Show slide text container"
+        "text_box": {
+          "content": "Text box container"
+        },
+        "layout": {
+          "options__1": {
+            "label": "Image first"
+          },
+          "options__2": {
+            "label": "Image second"
+          },
+          "label": "Desktop image placement",
+          "info": "Image first is the default mobile layout."
         },
         "mobile": {
           "content": "Mobile layout"
@@ -2711,6 +2721,9 @@
         },
         "show_flag_bottom": {
           "label": "Add a flag styled border at the bottom of the section"
+        },
+        "decor_fruit": {
+          "label": "Add a fruit image decoration at the bottom of the slider"
         },
         "accessibility": {
           "content": "Accessibility",
@@ -2756,37 +2769,6 @@
                 "label": "Large"
               }
             },
-            "box_align": {
-              "label": "Desktop content position",
-              "info": "Position is automatically optimized for mobile.",
-              "options__1": {
-                "label": "Top left"
-              },
-              "options__2": {
-                "label": "Top center"
-              },
-              "options__3": {
-                "label": "Top right"
-              },
-              "options__4": {
-                "label": "Middle left"
-              },
-              "options__5": {
-                "label": "Middle center"
-              },
-              "options__6": {
-                "label": "Middle right"
-              },
-              "options__7": {
-                "label": "Bottom left"
-              },
-              "options__8": {
-                "label": "Bottom center"
-              },
-              "options__9": {
-                "label": "Bottom right"
-              }
-            },
             "text_alignment": {
               "label": "Desktop content alignment",
               "option_1": {
@@ -2801,6 +2783,9 @@
             },
             "image_overlay_opacity": {
               "label": "Image overlay opacity"
+            },
+            "show_text_box": {
+              "label": "Show text box container"
             },
             "color_scheme": {
               "label": "Color scheme",
