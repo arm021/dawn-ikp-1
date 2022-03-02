@@ -25,7 +25,7 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length}}"
         tabindex="-1"
       >
-        <div class="slideshow__media banner__media media{% if block.settings.bg_image == blank %} placeholder{% endif %}">
+        <div class="slideshow__media slide__background banner__media media{% if block.settings.bg_image == blank %} placeholder{% endif %}">
           {%- if block.settings.bg_image -%}
             <img
               srcset="{%- if block.settings.bg_image.width >= 375 -%}{{ block.settings.bg_image | img_url: '375x' }} 375w,{%- endif -%}
@@ -146,9 +146,15 @@
   </div>
 {% endif %}
 
-{%- if section.settings.decor_fruit -%}
-  <div class="decor-fruit" style="display: block; position: relative;"></div>
-{%- endif -%}
+<div class="decor-container" style="position: relative; height: 10rem; z-index: 2;">
+  {%- if section.settings.decor_fruit -%}
+    <div class="decor-fruit"></div>
+  {%- endif -%}
+
+  {%- if section.settings.stamp -%}
+    {% render 'shea-stamp' %}
+  {%- endif -%}
+</div>
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
@@ -258,6 +264,12 @@
       "id": "decor_fruit",
       "default": false,
       "label": "t:sections.slideshow-custom.settings.decor_fruit.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "stamp",
+      "default": false,
+      "label": "t:sections.slideshow-custom.settings.stamp.label"
     },
     {
       "type": "header",

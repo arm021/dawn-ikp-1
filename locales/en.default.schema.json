@@ -2725,6 +2725,9 @@
         "decor_fruit": {
           "label": "Add a fruit image decoration at the bottom of the slider"
         },
+        "stamp": {
+          "label": "Add Shea Butter stamp at the bottom of the slider"
+        },
         "accessibility": {
           "content": "Accessibility",
           "label": "Slideshow description",
