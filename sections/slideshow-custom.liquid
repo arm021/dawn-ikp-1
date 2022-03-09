@@ -3,8 +3,8 @@
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 
 
-<slideshow-component class="slider-mobile-gutter{% if section.settings.show_text_below %} mobile-text-below{% endif %}" role="region" aria-roledescription="{{ 'sections.slideshow.carousel' | t }}" aria-label="{{ section.settings.accessibility_info | escape }}">
-  <div class="slideshow banner banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %} page-width"
+<slideshow-component class="slider-mobile-gutter" role="region" aria-roledescription="{{ 'sections.slideshow.carousel' | t }}" aria-label="{{ section.settings.accessibility_info | escape }}">
+  <div class="slideshow banner--{{ section.settings.slide_height }} grid grid--1-col slider slider--everywhere{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %} page-width"
     id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
@@ -50,45 +50,43 @@
           {%- endif -%}
         </div>
 
-        <div class="grid grid--gapless grid--1-col grid--{% if block.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %} page-width">
-          <div class="slideshow__text-wrapper slide__content banner__content grid grid--1-col grid--2-col-tablet{% if section.settings.layout == 'text_first' %} slider-content__grid--reverse{% endif %}">
-            <div class="banner__box banner__box-content grid__item media">
-              {%- if block.settings.image != blank -%}
-                <img
-                  srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
-                    {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
-                    {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
-                    {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
-                    {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
-                    {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
-                    {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
-                  src="{{ block.settings.image | img_url: '1500x' }}"
-                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
-                  alt="{{ block.settings.image.alt | escape }}"
-                  loading="lazy"
-                  width="{{ block.settings.image.width }}"
-                  height="{{ block.settings.image.height }}"
-                >
-              {%- else -%}
-                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
-            </div>
+        <div class="slide__content-wrapper{% if section.settings.layout == 'text_first' %} slider-content__grid--reverse{% endif %} page-width">
+          <div class="grid__item slide__media-wrapper media">
+            {%- if block.settings.image != blank -%}
+              <img
+                srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+                  {%- if block.settings.image.width >= 360 -%}{{ block.settings.image | img_url: '360x' }} 360w,{%- endif -%}
+                  {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                  {%- if block.settings.image.width >= 750 -%}{{ block.settings.image | img_url: '750x' }} 750w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1070 -%}{{ block.settings.image | img_url: '1070x' }} 1070w,{%- endif -%}
+                  {%- if block.settings.image.width >= 1500 -%}{{ block.settings.image | img_url: '1500x' }} 1500w,{%- endif -%}
+                  {{ block.settings.image | img_url: 'master' }} {{ block.settings.image.width }}w"
+                src="{{ block.settings.image | img_url: '1500x' }}"
+                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
 
-            <div class="slideshow__text banner__box content-container content-container--full-width-mobile{% if block.settings.show_text_box %} color-{{ block.settings.color_scheme }}{% endif %} slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }} grid__item text--shadow">
-              {%- if block.settings.heading != blank -%}
-                <h2 class="banner__heading{% if block.settings.heading_size == 'medium' %} h1{% elsif block.settings.heading_size == 'large' %} h0{% endif %}">{{ block.settings.heading | escape }}</h2>
-              {%- endif -%}
-              {%- if block.settings.subheading != blank -%}
-                <div class="banner__text" {{ block.shopify_attributes }}>
-                  <span>{{ block.settings.subheading | escape }}</span>
-                </div>
-              {%- endif -%}
-              {%- if block.settings.button_label != blank -%}
-                <div class="banner__buttons">
-                  <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}">{{ block.settings.button_label | upcase | escape }}</a>
-                </div>
-              {%- endif -%}
-            </div>
+          <div class="grid__item slide__text-wrapper slideshow__text slideshow__text{% if block.settings.show_text_box %} color-{{ block.settings.color_scheme }}{% endif %} slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }} text--shadow">
+            {%- if block.settings.heading != blank -%}
+              <h2 class="banner__heading{% if block.settings.heading_size == 'medium' %} h1{% elsif block.settings.heading_size == 'large' %} h0{% endif %}">{{ block.settings.heading | escape }}</h2>
+            {%- endif -%}
+            {%- if block.settings.subheading != blank -%}
+              <div class="banner__text" {{ block.shopify_attributes }}>
+                <span>{{ block.settings.subheading | escape }}</span>
+              </div>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank -%}
+              <div class="banner__buttons">
+                <a{% if block.settings.link %} href="{{ block.settings.link }}"{% else %} role="link" aria-disabled="true"{% endif %} class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}">{{ block.settings.button_label | upcase | escape }}</a>
+              </div>
+            {%- endif -%}
           </div>
         </div>
       </div>
@@ -146,7 +144,7 @@
   </div>
 {% endif %}
 
-<div class="decor-container" style="position: relative; height: 10rem; z-index: 2;">
+<div class="decor-container">
   {%- if section.settings.decor_fruit -%}
     <div class="decor-fruit"></div>
   {%- endif -%}
@@ -249,12 +247,6 @@
     },
     {
       "type": "checkbox",
-      "id": "show_text_below",
-      "label": "t:sections.slideshow-custom.settings.show_text_below.label",
-      "default": true
-    },
-    {
-      "type": "checkbox",
       "id": "show_flag_bottom",
       "default": false,
       "label": "t:sections.slideshow-custom.settings.show_flag_bottom.label"
@@ -298,27 +290,6 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow-custom.blocks.slide.settings.image.label"
-        },
-        {
-          "type": "select",
-          "id": "desktop_image_width",
-          "options": [
-            {
-              "value": "small",
-              "label": "t:sections.image-with-text.settings.desktop_image_width.options__1.label"
-            },
-            {
-              "value": "medium",
-              "label": "t:sections.image-with-text.settings.desktop_image_width.options__2.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.image-with-text.settings.desktop_image_width.options__3.label"
-            }
-          ],
-          "default": "medium",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.label",
-          "info": "t:sections.image-with-text.settings.desktop_image_width.info"
         },
         {
           "type": "header",

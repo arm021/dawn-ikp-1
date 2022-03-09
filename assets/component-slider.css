@@ -78,7 +78,7 @@ slider-component {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 @media (prefers-reduced-motion) {

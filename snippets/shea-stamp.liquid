@@ -3,20 +3,29 @@
 </div>
 
 {% style %}
-	.stamp {
-		display: flex;
+  .stamp {
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     background: center/contain no-repeat url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/round-border.png?907);
-    position: absolute;
-    transform: translate(170%, -60%);
-    left: 0;
+    position: relative;
+    transform: translate(-50%, 25%);
+    left: 50%;
     right: 0;
     top: 0;
-    margin: auto;
+    margin: 5rem auto;
     width: 170px;
     height: 170px;
-	}
+  }
+
+  @media screen and (min-width: 750px) {
+    .stamp {
+      position: absolute;
+      transform: translate(170%, -60%);
+      left: 0;
+      margin: auto;
+    }
+  }
 
 	.stamp p {
 		font-size: 1.1rem;
