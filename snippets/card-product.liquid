@@ -98,7 +98,31 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %} center">
+          <div class="card-rating">
+            {%- if show_rating -%}
+              {% liquid
+                assign rating_decimal = 0
+                assign rating_count = 0
+                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                if decimal >= 0.3 and decimal <= 0.7
+                  assign rating_decimal = 0.5
+                elsif decimal > 0.7
+                  assign rating_decimal = 1
+                endif
+              %}
+              <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
+                <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: 5; --rating-decimal: {{ rating_decimal }};"></span>
+              </div>
+              <p class="rating-text caption">
+                <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
+              </p>
+              <p class="rating-count caption">
+                <span aria-hidden="true">({% if card_product.metafields.reviews.rating_count %}{{ card_product.metafields.reviews.rating_count }}{% else %}no reviews{% endif %})</span>
+                <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+              </p>
+            {%- endif -%}
+          </div>
+          <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h4{% endif %} center">
             <a href="{{ card_product.url | default: '#' }}" class="full-unstyled-link">
               {{ card_product.title | escape }}
             </a>
@@ -110,28 +134,6 @@
             {%- endif -%}
 
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
-            {%- if show_rating -%}
-              {% liquid
-                assign rating_decimal = 0
-                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
-                if decimal >= 0.3 and decimal <= 0.7
-                  assign rating_decimal = 0.5
-                elsif decimal > 0.7
-                  assign rating_decimal = 1
-                endif
-              %}
-              <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}">
-                <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-              </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">{{ card_product.metafields.reviews.rating.value }} / {{ card_product.metafields.reviews.rating.value.scale_max }}</span>
-              </p>
-              <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
-              </p>
-            {%- endif -%}
 
             {% render 'price', product: card_product, price_class: 'center' %}
           </div>
@@ -148,7 +150,8 @@
   </div>
 {%- else -%}
   <div class="card-wrapper underline-links-hover">
-    <div class="card
+    <div class="placeholder
+      card
       card--{{ settings.card_style }}
       card--text
       {% if extend_height %} card--extend-height{% endif %}
@@ -156,32 +159,29 @@
       {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}"
       style="--ratio-percent: 100%;"
     >
-      <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }}{% endif %}{% if settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: 100%;">
+      <div class="card__inner color-{{ settings.card_color_scheme }}{% if settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: 100%;">
         <div class="card__content">
           <div class="card__information">
-            <h3 class="card__heading center">
+            <div class="card-image-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <h3 class="card__heading{% if settings.card_style == 'standard' %} h4{% endif %} center">
               <a href="#" class="full-unstyled-link">
                 {{ 'onboarding.product_title' | t }}
               </a>
             </h3>
+            <div class="card-information">
+              {%- if show_vendor -%}
+                <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
+                <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
+              {%- endif -%}
+              {% render 'price' %}
+            </div>
           </div>
         </div>
       </div>
       <div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading{% if settings.card_style == 'standard' %} h5{% endif %} center">
-            <a href="#" class="full-unstyled-link">
-              {{ 'onboarding.product_title' | t }}
-            </a>
-          </h3>
-          <div class="card-information">
-            {%- if show_vendor -%}
-              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-              <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
-            {%- endif -%}
-            {% render 'price' %}
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>

@@ -60,12 +60,13 @@
                   media_aspect_ratio: section.settings.image_ratio,
                   show_secondary_image: section.settings.show_secondary_image,
                   show_vendor: section.settings.show_vendor,
-                  show_rating: section.settings.show_rating
+                  show_rating: section.settings.show_rating,
+                  accent_icons: section.settings.accent_icons
                 %}
               </li>
             {%- else -%}
               {%- for i in (1..4) -%}
-                <li class="grid__item">
+                <li id="Slide-{{ block.id }}-{{ forloop.index }}" class="grid__item{% if block.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %} color-{{ settings.card_color_scheme }}">
                   {% render 'card-product', show_vendor: section.settings.show_vendor %}
                 </li>
               {%- endfor -%}
@@ -90,16 +91,15 @@
       </div>
 		{%- endfor -%}
   
-    {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all{% if section.settings.swipe_on_mobile %} small-hide medium-hide{% endif %}">
-        <a href="{{ block.settings.collection.url }}"
-          class="button"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: block.settings.collection.title }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
-    {%- endif -%}
+    
+    <div class="center collection__view-all{% if section.settings.swipe_on_mobile %} small-hide medium-hide{% endif %}">
+      <a href="{{ block.settings.collection.url }}"
+        class="button"
+        aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: block.settings.collection.title }}"
+      >
+        {{ 'sections.featured_collection.view_all' | t }}
+      </a>
+    </div>
   </div>
 </div>
 
@@ -171,6 +171,35 @@
       "info": "t:sections.all.colors.has_cards_info"
     },
     {
+      "type": "select",
+      "id": "card_color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "Product card background color"
+    },
+    {
       "type": "checkbox",
       "id": "show_view_all",
       "default": true,
@@ -224,6 +253,11 @@
       "default": false,
       "label": "t:sections.featured-collection-tabs.settings.show_rating.label",
       "info": "t:sections.featured-collection-tabs.settings.show_rating.info"
+    },
+    {
+      "type": "color",
+      "id": "accent_icons",
+      "label": "t:sections.featured-collection-tabs.settings.accent_icons.label"
     },
     {
       "type": "header",

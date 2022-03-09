@@ -10,14 +10,12 @@
 @media screen and (min-width: 750px) {
 	.collection-tabs .tab {
 		margin: 0 3rem;
-		padding: 0 3rem;
 	}
 }
 
 @media screen and (min-width: 990px) {
 	.collection-tabs .tab {
 		margin: 0 5rem;
-		padding: 0 5rem;
 	}
 }
 
@@ -70,4 +68,26 @@
 	.tabcontent ul > li:nth-child(4) {
 		display: block;
 	}
+}
+
+.tabcontent .card {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	padding: 3rem 2rem;
+}
+
+.tabcontent .card .card__content .card__information {
+	display: grid;
+	grid-template-rows: 2fr 4fr 1fr;
+	align-items: center;
+	justify-content: center;
+}
+
+.tabcontent .card.placeholder .card__content .card__information {
+	grid-template-rows: 2fr 1fr 1fr;
+}
+
+.tabcontent .card.placeholder .card__content .card__information .card-information {
+	display: grid;
+	justify-content: center;
 }

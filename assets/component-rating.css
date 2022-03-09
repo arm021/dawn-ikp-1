@@ -58,3 +58,11 @@
     display: block;
   }
 }
+
+/* Custom style */
+.card-rating {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  justify-content: center;
+}
