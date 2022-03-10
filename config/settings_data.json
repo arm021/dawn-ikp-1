@@ -17,6 +17,7 @@
     "inputs_radius": 0,
     "inputs_shadow_opacity": 25,
     "inputs_shadow_blur": 20,
+    "card_color_scheme": "background-1",
     "media_border_thickness": 0,
     "drawer_shadow_blur": 0,
     "badge_position": "top right",
