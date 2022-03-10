@@ -91,3 +91,22 @@
 	display: grid;
 	justify-content: center;
 }
+
+.tabcontent .slider-button {
+	position: absolute;
+	z-index: 1;
+}
+
+.tabcontent .slider-button.slider-button--prev {
+	left: -5px;
+	top: 25%;
+}
+
+.tabcontent .slider-button.slider-button--next {
+	right: -5px;
+	top: 25%;
+}
+
+.tabcontent .slider-button .icon {
+	height: 2rem;
+}

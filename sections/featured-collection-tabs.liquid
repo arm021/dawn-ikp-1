@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
 
 <noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript> 
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -38,7 +38,7 @@
         <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %} h1 center">{{ section.settings.title | escape }}</h2>
   
         {%- if section.settings.show_view_all and section.settings.swipe_on_mobile and more_in_collection -%}
-          <a href="{{ block.settings.collection.url }}" class="link underlined-link large-up-hide">{{ 'sections.featured_collection.view_all' | t }}</a>
+          <a href="{{ block.settings.collection.url }}" class="link underlined-link large-up-hide">{{ 'sections.featured_collection.view_all' | t | upcase }}</a>
         {%- endif -%}
       </div>
     {% endunless %}
@@ -52,9 +52,9 @@
     {%- for block in section.blocks -%}
       <div id="{{ block.settings.collection.id }}" class="tabcontent">
         <slider-component class="slider-mobile-gutter">
-          <ul id="Slide--{{ block.settings.collection.id }}" class="grid product-grid grid--1-col grid--3-col-tablet grid--4-col-desktop{% if products_to_display >= 5 %} grid--one-third-max grid--4-col-desktop grid--quarter-max{% endif %}{% if block.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider slider--mobile{% endif %}" role="list">
+          <ul id="Slider-{{ section.id }}" class="grid grid--1-col product-grid{% if products_to_display == 4 or section.settings.collection == blank %} grid--3-col-tablet grid--4-col-desktop{% else %} grid--3-col-tablet{% endif %}{% if products_to_display > 5 %} grid--one-third-max grid--4-col-desktop grid--quarter-max{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--mobile{% endif %}" role="list">
             {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
-              <li id="Slide-{{ block.id }}-{{ forloop.index }}" class="grid__item{% if block.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %} color-{{ settings.card_color_scheme }}">
+              <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item{% if block.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %} color-{{ settings.card_color_scheme }}">
                 {% render 'card-product',
                   card_product: product,
                   media_aspect_ratio: section.settings.image_ratio,
@@ -66,7 +66,7 @@
               </li>
             {%- else -%}
               {%- for i in (1..4) -%}
-                <li id="Slide-{{ block.id }}-{{ forloop.index }}" class="grid__item{% if block.settings.collection.all_products_count > 2 and section.settings.swipe_on_mobile and section.settings.products_to_show > 2 %} slider__slide{% endif %} color-{{ settings.card_color_scheme }}">
+                <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="grid__item slider__slide color-{{ settings.card_color_scheme }}">
                   {% render 'card-product', show_vendor: section.settings.show_vendor %}
                 </li>
               {%- endfor -%}
@@ -75,14 +75,11 @@
           {%- if section.settings.swipe_on_mobile -%}
             <div class="slider-buttons no-js-hidden">
               <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}">{% render 'icon-caret' %}</button>
-              <div class="slider-counter slider-counter--dots">
-                <div class="slideshow__control-wrapper">
-                  {%- for block in section.blocks -%}
-                    <button class="slider-counter__link slider-counter__link--dots link" {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length}}" aria-controls="Slide-{{ block.id }}">
-                      <span class="dot"></span>
-                    </button>
-                  {%- endfor -%}
-                </div>
+              <div class="slider-counter caption">
+                <span class="slider-counter--current">1</span>
+                <span aria-hidden="true"> / </span>
+                <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                <span class="slider-counter--total">{{ products_to_display }}</span>
               </div>
               <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}">{% render 'icon-caret' %}</button>
             </div>
@@ -97,7 +94,7 @@
         class="button"
         aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: block.settings.collection.title }}"
       >
-        {{ 'sections.featured_collection.view_all' | t }}
+        {{ 'sections.featured_collection.view_all' | t | upcase }}
       </a>
     </div>
   </div>

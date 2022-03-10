@@ -93,3 +93,9 @@
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
 }
+
+/* Custom style */
+.price--on-sale .price-item--sale {
+  color: rgb(var(--color-base-accent-2));
+  font-weight: 600;
+}
