@@ -247,3 +247,39 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer .list-social__link {
   padding: 1.3rem 1.25rem;
 }
+
+/* Custom style */
+.header--middle-left .header__inline-menu {
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  padding-left: 1rem;
+}
+
+.header__inline-menu details[open] > .header__submenu{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  position: absolute;
+  transform: translate(0, 0);
+  left: -50%;
+  width: auto;
+}
+
+.header__submenu .header__menu-item {
+  padding: 0.95rem 3.5rem 0.95rem 2rem;
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  align-items: flex-start;
+  justify-items: center;
+  background-color: white;
+  width: fit-content;
+}
+
+.header--middle-left .header__icons > a {
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+@media screen and (min-width: 990px) {
+  .header--middle-left .header__icons > a {
+    margin: 0.2rem 1rem;
+  }
+}
+

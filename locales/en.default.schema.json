@@ -1066,6 +1066,13 @@
           },
           "info": "Position is automatically optimized for mobile."
         },
+        "show_top_menu": {
+          "label": "Show top menu"
+        },
+        "menu_top": {
+          "label": "Top menu",
+          "info": "Add a menu bar at the top."
+        },
         "menu": {
           "label": "Menu"
         },
