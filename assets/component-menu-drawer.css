@@ -35,13 +35,13 @@ menu-drawer > details[open] > summary::before {
   z-index: 3;
   left: 0;
   top: 100%;
-  width: calc(100vw - 4rem);
+  width: 100vw;
   padding: 0;
-  border-width: 0 var(--drawer-border-width) 0 0;
+  border-width: .2rem 0 0 0;
   background-color: rgb(var(--color-background));
   overflow-x: hidden;
   border-style: solid;
-  border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
+  border-color: rgba(var(--color-foreground));
   filter: drop-shadow(
     var(--drawer-shadow-horizontal-offset)
     var(--drawer-shadow-vertical-offset)
@@ -94,7 +94,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__navigation {
-  padding: 5.6rem 0;
+  padding: 2rem 0 1rem;
 }
 
 .menu-drawer__inner-submenu {
@@ -273,8 +273,10 @@ details[open].menu-opening > .menu-drawer__submenu {
   width: fit-content;
 }
 
-.header--middle-left .header__icons > a {
-  border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+@media screen and (min-width: 750px) {
+  .header--middle-left .header__icons > a {
+    border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  }
 }
 
 @media screen and (min-width: 990px) {

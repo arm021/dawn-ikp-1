@@ -16,6 +16,7 @@
 
 <style>
   header-drawer {
+    display: flex;
     justify-self: start;
     margin-left: -1.2rem;
   }
@@ -61,13 +62,8 @@
     }
   }
 
-  .top-header > nav {
-    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
-  }
-
   .top-header .list-menu__item > span {
     font-size: 1rem;
-    opacity: 0.9;
   }
 
   .header--middle-left .header__icon span.label {
@@ -108,11 +104,11 @@
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
 </svg>
-<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.box_shadow %} header-wrapper--box-shadow{% else %} header-wrapper--border-bottom{% endif %}">
   {%- if section.settings.show_top_menu -%}
-    <div class="top-header page-width">
+    <div class="top-header page-width small-hide">
       {%- if section.settings.menu_top != blank -%}
-        <nav>
+        <nav class="border-bottom">
           <ul class="list-menu list-menu--inline" role="list">
             {%- for link in section.settings.menu_top.links -%}
               <li>
@@ -170,7 +166,7 @@
       {%- endif -%}
     </div>
   {%- endif -%}
-  <header class="header header--{{ section.settings.logo_position }} page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
+  <header class="header header--middle-left page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="mobile">
         <details id="Details-menu-drawer-container" class="menu-drawer-container">
@@ -183,7 +179,7 @@
           <div id="menu-drawer" class="menu-drawer motion-reduce" tabindex="-1">
             <div class="menu-drawer__inner-container">
               <div class="menu-drawer__navigation-container">
-                <nav class="menu-drawer__navigation">
+                <nav class="menu-drawer__navigation border-top border-bottom">
                   <ul class="menu-drawer__menu list-menu" role="list">
                     {%- for link in section.settings.menu.links -%}
                       <li>
@@ -246,98 +242,86 @@
                     {%- endfor -%}
                   </ul>
                 </nav>
-                <div class="menu-drawer__utility-links">
-                  {%- if shop.customer_accounts_enabled -%}
-                    <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
-                      {% render 'icon-account' %}
-                      {%- liquid
-                        if customer
-                          echo 'customer.account_fallback' | t
-                        else
-                          echo 'customer.log_in' | t
-                        endif
-                      -%}
-                    </a>
-                  {%- endif -%}
-                  <ul class="list list-social list-unstyled" role="list">
-                    {%- if settings.social_twitter_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
-                          {%- render 'icon-twitter' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
-                        </a>
-                      </li>
+
+                {%- if section.settings.show_top_menu -%}
+                  <div class="top-header">
+                    {%- if section.settings.menu_top != blank -%}
+                      <nav class="menu-drawer__navigation">
+                        <ul class="menu-drawer__menu list-menu" role="list">
+                          {%- for link in section.settings.menu_top.links -%}
+                            <li>
+                              {%- if link.links != blank -%}
+                                <details-disclosure>
+                                  <details id="Details-HeaderMenu-{{ forloop.index }}">
+                                    <summary class="header__menu-item list-menu__item link focus-inset">
+                                      <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | upcase | escape }}</span>
+                                      {% render 'icon-caret' %}
+                                    </summary>
+                                    <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                                      {%- for childlink in link.links -%}
+                                        <li class="grid__item">
+                                          {%- if childlink.links == blank and childlink.type == 'collection_link' -%}
+                                          {% assign linkCollection = childlink.object %}
+                                            <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                              {% if linkCollection.image %}
+                                                <img src="{{ linkCollection.image.src | collection_img_url: 'large' }}" class="lazyload" alt="{{ linkCollection.title | escape  }}" />
+                                              {% else %}
+                                                <img src="{{ linkCollection.products.first.featured_image.src | product_img_url: 'large' }}" class="lazyload" alt="{{ linkCollection.title | escape  }}" />
+                                              {% endif %}
+                                              <h4>{{childlink.title }}</h4>
+                                            </a>
+                                          {%- else -%}
+                                            <details>
+                                              <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                                                {{ childlink.title | escape }}
+                                                {% render 'icon-caret' %}
+                                              </summary>
+                                              <ul class="header__submenu list-menu motion-reduce">
+                                                {%- for grandchildlink in childlink.links -%}
+                                                  <li>
+                                                    <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                                      {{ grandchildlink.title | escape }}
+                                                    </a>
+                                                  </li>
+                                                {%- endfor -%}
+                                              </ul>
+                                            </details>
+                                          {%- endif -%}
+                                        </li>
+                                      {%- endfor -%}
+                                    </ul>
+                                  </details>
+                                </details-disclosure>
+                              {%- else -%}
+                                <a href="{{ link.url }}" class="header__menu-item menu-drawer__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                                  <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | upcase }}</span>
+                                </a>
+                              {%- endif -%}
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </nav>
                     {%- endif -%}
-                    {%- if settings.social_facebook_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
-                          {%- render 'icon-facebook' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_pinterest_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
-                          {%- render 'icon-pinterest' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_instagram_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
-                          {%- render 'icon-instagram' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_tiktok_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
-                          {%- render 'icon-tiktok' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_tumblr_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
-                          {%- render 'icon-tumblr' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_snapchat_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
-                          {%- render 'icon-snapchat' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_youtube_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
-                          {%- render 'icon-youtube' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                    {%- if settings.social_vimeo_link != blank -%}
-                      <li class="list-social__item">
-                        <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
-                          {%- render 'icon-vimeo' -%}
-                          <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
-                        </a>
-                      </li>
-                    {%- endif -%}
-                  </ul>
-                </div>
+                  </div>
+                {%- endif -%}
               </div>
             </div>
           </div>
         </details>
+        {%- if shop.customer_accounts_enabled -%}
+          <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset">
+            {% render 'icon-account' %}
+            <span class="label">
+              {%- liquid
+                if customer
+                  echo 'customer.account_fallback' | t
+                else
+                  echo 'customer.log_in' | t
+                endif
+              -%}
+            </span>
+          </a>
+        {%- endif -%}
       </header-drawer>
     {%- endif -%}
 
@@ -790,27 +774,6 @@
       "label": "t:sections.header.settings.logo_width.label"
     },
     {
-      "type": "select",
-      "id": "logo_position",
-      "options": [
-        {
-          "value": "middle-left",
-          "label": "t:sections.header.settings.logo_position.options__1.label"
-        },
-        {
-          "value": "top-left",
-          "label": "t:sections.header.settings.logo_position.options__2.label"
-        },
-        {
-          "value": "top-center",
-          "label": "t:sections.header.settings.logo_position.options__3.label"
-        }
-      ],
-      "default": "middle-left",
-      "label": "t:sections.header.settings.logo_position.label",
-      "info": "t:sections.header.settings.logo_position.info"
-    },
-    {
       "type": "checkbox",
       "id": "show_top_menu",
       "label": "t:sections.header.settings.show_top_menu.label"
@@ -830,9 +793,9 @@
     },
     {
       "type": "checkbox",
-      "id": "show_line_separator",
+      "id": "box_shadow",
       "default": true,
-      "label": "t:sections.header.settings.show_line_separator.label"
+      "label": "t:sections.header.settings.box_shadow.label"
     },
     {
       "type": "checkbox",

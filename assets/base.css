@@ -2135,13 +2135,24 @@ input[type='checkbox'] {
 /* Main Header Layout */
 .header-wrapper {
   display: block;
-  box-shadow: 0 0 3rem;
   position: relative;
   background-color: rgb(var(--color-background));
 }
 
+.header-wrapper--box-shadow {
+  box-shadow: 0 0 3rem;
+}
+
 .header-wrapper--border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-top {
+  border-bottom: 0.2rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-bottom {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
 }
 
 .header {

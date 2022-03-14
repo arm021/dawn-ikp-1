@@ -1076,8 +1076,8 @@
         "menu": {
           "label": "Menu"
         },
-        "show_line_separator": {
-          "label": "Show separator line"
+        "box_shadow": {
+          "label": "Add box shadow"
         },
         "enable_sticky_header": {
           "label": "Enable sticky header",
