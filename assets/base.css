@@ -2147,14 +2147,6 @@ input[type='checkbox'] {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.4);
 }
 
-.border-top {
-  border-bottom: 0.2rem solid rgba(var(--color-foreground), 0.4);
-}
-
-.border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
-}
-
 .header {
   display: grid;
   grid-template-areas: 'left-icon heading icons';
@@ -2796,6 +2788,38 @@ details-disclosure > details {
 }
 
 /* Custom style */
+.border-top-thick {
+  border-top: 0.2rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-bottom-thick {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-left-thick {
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-right-thick {
+  border-right: 0.1rem solid rgba(var(--color-foreground), 0.4);
+}
+
+.border-top {
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.border-bottom {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.border-left {
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.border-right {
+  border-right: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
 .position--absolute {
   position: absolute;
 }
