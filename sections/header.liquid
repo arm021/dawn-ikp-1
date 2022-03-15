@@ -191,13 +191,12 @@
                           <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                             <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
                               {{ link.title | escape }}
-                              {% render 'icon-arrow' %}
-                              {% render 'icon-caret' %}
+                              <span class="submenu__trigger-open">{% render 'icon-caret' %}</span>
                             </summary>
                             <div id="link-{{ link.title | escape }}" class="menu-drawer__submenu motion-reduce" tabindex="-1">
                               <div class="menu-drawer__inner-submenu">
                                 <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                                  {% render 'icon-arrow' %}
+                                  <span class="submenu__trigger-close">{% render 'icon-caret' %}</span>
                                   {{ link.title | escape }}
                                 </button>
                                 <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
@@ -436,9 +435,9 @@
                     <summary class="header__menu-item list-menu__item link focus-inset">
                       <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
                     </summary>
-                    <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                    <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce grid" role="list" tabindex="-1">
                       {%- for childlink in link.links -%}
-                          <li class="grid__item">
+                          <li class="header__submenu-item grid__item{% if forloop.first == false %} border-left{% endif %}">
                             {%- if childlink.links == blank and childlink.type == 'collection_link' -%}
                             {% assign linkCollection = childlink.object %}
                               <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
