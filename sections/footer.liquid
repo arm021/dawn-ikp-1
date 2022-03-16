@@ -517,7 +517,7 @@
         {%- endif -%}
       </div>
       
-      <div class="footer__column footer__localization isolate">
+      <!-- <div class="footer__column footer__localization isolate">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <noscript>
             {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
@@ -602,12 +602,12 @@
             {%- endform -%}
           </localization-form>
         {%- endif -%}
-      </div>
+      </div> -->
     </div>
   </div>
 </footer>
 
-{% javascript %}
+<!-- {% javascript %}
   class LocalizationForm extends HTMLElement {
     constructor() {
       super();
@@ -657,7 +657,7 @@
   }
 
   customElements.define('localization-form', LocalizationForm);
-{% endjavascript %}
+{% endjavascript %} -->
 
 {% schema %}
 {

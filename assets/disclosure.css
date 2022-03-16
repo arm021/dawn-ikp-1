@@ -27,8 +27,8 @@
   padding-bottom: 0.5rem;
   padding-top: 0.5rem;
   position: absolute;
-  bottom: 100%;
-  transform: translateY(-1rem);
+  top: 100%;
+  transform: translateY(1rem);
   z-index: 2;
   background-color: rgb(var(--color-background));
   border-radius: var(--popup-corner-radius);
@@ -44,4 +44,18 @@
   padding: 0.5rem 2.2rem;
   text-decoration: none;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
+}
+
+/* Custom style */
+.header__localization h2 {
+  color: rgba(var(--color-foreground),.75);
+}
+
+.header__localization .disclosure .localization-form__select {
+  margin: 0;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.header__localization .disclosure .disclosure__list {
+  margin-left: 0;
 }
