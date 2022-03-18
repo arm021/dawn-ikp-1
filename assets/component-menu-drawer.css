@@ -276,13 +276,13 @@ details[open].menu-opening > .menu-drawer__submenu {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   box-shadow: 0 1rem 1rem rgb(var(--color-foreground));
   position: absolute;
-  width: 100vw;
+  width: max-content;
   max-width: var(--page-width);
   border-top: 0.1rem solid rgba(var(--color-foreground));
-  padding: 5rem;
-  transform: translate(0, 0);
-  left: -20rem;
-  top: 7rem;
+  padding: 5rem 0;
+  transform: translate(0, 2.8rem);
+  left: 0;
+  right: 0;
 }
 
 @media screen and (min-width: 990px) {
@@ -291,7 +291,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   }
   
   .header__inline-menu details[open] > .header__submenu {
-    left: -21rem;
+    transform: translate(0, 2.1rem);
   }  
 }
 
@@ -323,8 +323,9 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .header__submenu .header__menu-item img {
-  padding: 0 3rem;
-  width: 100%;
+  padding: 0 5rem;
+  width: 20vw;
+  max-width: 100%;
 }
 
 @media screen and (min-width: 750px) {
