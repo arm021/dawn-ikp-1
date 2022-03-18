@@ -1,5 +1,36 @@
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
 
+<style>
+  .collection-hero.face {
+    background-image: url(//cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-face.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .collection-hero.body {
+    background-image: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-pink.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .collection-hero.hair {
+    background-image: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-teal.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .collection-hero:not(.collection-hero--with-image) {
+    text-align: center;
+    padding: 5rem 0;
+  }
+</style>
+
 {%- style -%}
   @media screen and (max-width: 749px) {
     .collection-hero--with-image .collection-hero__inner {
@@ -8,8 +39,16 @@
   }
 {%- endstyle -%}
 
-<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
-  <div class="collection-hero__inner page-width">
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} page-width
+  {% for product_type in collection.all_types %}
+    {%- case product_type -%}
+      {%- when 'face' -%} face
+      {%- when 'body' -%} body
+      {%- when 'hair' -%} hair
+    {% endcase %}
+  {% endfor %}"
+>
+  <div class="collection-hero__inner{% if section.settings.show_text_box %} color-{{ section.settings.color_scheme }}{% endif %} page-width">
     <div class="collection-hero__text-wrapper">
       <h1 class="collection-hero__title">
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
@@ -63,6 +102,12 @@
       "default": false,
       "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
       "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_box",
+      "default": false,
+      "label": "t:sections.main-collection-banner.settings.show_text_box.label"
     },
     {
       "type": "select",

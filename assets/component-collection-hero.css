@@ -1,9 +1,15 @@
+.collection-hero {
+  text-align: center;
+  padding: 5rem 0;
+}
+
 .collection-hero__inner {
   display: flex;
   flex-direction: column;
 }
 
-.collection-hero--with-image .collection-hero__inner {
+.collection-hero--with-image .collection-hero__inner {    margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
   margin-bottom: 0;
   padding-bottom: 2rem;
 }
@@ -13,6 +19,7 @@
     padding: calc(4rem + var(--page-width-margin)) 0
       calc(4rem + var(--page-width-margin));
     overflow: hidden;
+    text-align: left;
   }
 
   .collection-hero--with-image .collection-hero__inner {
@@ -41,17 +48,16 @@
 }
 
 .collection-hero__title + .collection-hero__description {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
   font-size: 1.6rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
 }
 
 @media screen and (min-width: 750px) {
   .collection-hero__title + .collection-hero__description {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .collection-hero__description {
