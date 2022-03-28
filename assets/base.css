@@ -2788,6 +2788,10 @@ details-disclosure > details {
 }
 
 /* Custom style */
+.border {
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
 .border-top-thick {
   border-top: 0.2rem solid rgba(var(--color-foreground), 0.4);
 }
@@ -2818,6 +2822,10 @@ details-disclosure > details {
 
 .border-right {
   border-right: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.box-shadow {
+  box-shadow: 0 0 3rem;
 }
 
 .position--absolute {

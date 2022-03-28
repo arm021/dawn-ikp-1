@@ -1,0 +1,77 @@
+<div class="product-details-container">
+	<div class="product-details">
+		<div class="label">
+			<strong>{{ product.metafields.global.cat1 }}</strong>
+		</div>
+		<div class="information">
+			{{ product.metafields.global.desc1 }}
+		</div>
+		<div class="label">
+			<strong>{{ product.metafields.global.cat2 }}</strong>
+		</div>
+		<div class="information">
+			{{ product.metafields.global.desc2 }}
+		</div>
+		<div class="label">
+			<strong>{{ product.metafields.global.cat3 }}</strong>
+		</div>
+		<div class="information">
+			{{ product.metafields.global.desc3 }}
+		</div>
+		<div class="label">
+			<strong>{{ product.metafields.global.cat4 }}</strong>
+		</div>
+		<div class="information">
+			{{ product.metafields.global.desc4 }}
+		</div>
+	</div>
+
+	<div class="reminder-container color-background-2 center">
+		<div class="reminder-top border-bottom">
+			<small>
+				The ingredients listed within the composition of the products of the brand Institut Karité Paris are regularly updated. Before using a product of the brand Institut Karité Paris, please read the list of ingredients located on its packaging to ensure that the ingredients are suitable for your personal use, particularly if you're at risk of an allergic reaction. Only the ingredients listed on the packaging should be considered binding.
+			</small>
+		</div>
+		<div class="reminder-bottom">
+			<img class="lazyload" data-src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/img-package.png" alt="package_icon" src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/img-package.png">
+			<small>
+				Remember to sort your packaging.
+			</small>
+		</div>
+	</div>
+</div>
+
+<style>
+	.product-details-container {
+		display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5rem;
+	}
+	
+	.product-details {
+		display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+	}
+
+	@media screen and (min-width: 750px) {
+		.product-details {
+			grid-template-columns: auto 1fr;
+			grid-gap: 3rem 5rem;
+		}
+	}
+
+	@media screen and (min-width:990px) {
+		.product-details-container {
+			grid-template-columns: 2fr 1fr;
+		}
+	}
+	
+	.reminder-container {
+		padding: 5rem;
+	}
+
+	.reminder-bottom img {
+		width: 4rem;
+	}
+</style>

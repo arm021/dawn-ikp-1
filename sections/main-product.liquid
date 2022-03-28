@@ -9,6 +9,20 @@
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
+<style>
+  .product-background.face {
+    background: url(//cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-face.jpg) center center;
+  }
+
+  .product-background.body {
+    background: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-pink.jpg) center center;
+  }
+
+  .product-background.hair {
+    background: url(https://cdn.shopify.com/s/files/1/0117/9005/7534/files/bg-teal.jpg) center center;
+  }
+</style>
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -32,8 +46,14 @@
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-<section class="page-width section-{{ section.id }}-padding">
-  <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+<section class="page-width section-{{ section.id }}-padding product-background
+  {% if section.settings.show_background_image %}
+    {% if product.type == 'face' %} face{% elsif product.type == 'body' %} body{% elsif product.type == 'hair' %} hair{% endif %}
+  {% endif %}"
+>
+  {%- render 'breadcrumbs' -%}
+
+  <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %} color-background-1 box-shadow">
     <div class="grid__item product__media-wrapper">
       <media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
         <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
@@ -197,9 +217,9 @@
               {{- block.settings.text -}}
             </p>
           {%- when 'title' -%}
-            <h1 class="product__title" {{ block.shopify_attributes }}>
+            <h2 class="product__title" {{ block.shopify_attributes }}>
               {{ product.title | escape }}
-            </h1>
+            </h2>
           {%- when 'price' -%}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
@@ -1020,6 +1040,12 @@
       "type": "header",
       "content": "t:sections.main-product.settings.header.content",
       "info": "t:sections.main-product.settings.header.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background_image",
+      "default": true,
+      "label": "Use image background"
     },
     {
       "type": "select",
