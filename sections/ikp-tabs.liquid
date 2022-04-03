@@ -1,6 +1,11 @@
 <style>
+  .tab-content {
+    margin-top: 5rem;
+  }
+  
   .tab {
     display: grid;
+    background-color: transparent;
   }
 
   .tablinks {
@@ -11,8 +16,13 @@
   }
 
   .tabcontent {
-    padding: 5rem 1rem;
-    line-height: 2.5;
+    padding: 5rem 0;
+    line-height: 1.5;
+  }
+
+  .tabcontent .product__description.rte {
+    max-width: 80rem;
+    margin: auto;
   }
 
   @media screen and (min-width: 750px) {
@@ -22,6 +32,10 @@
 
     .tablinks {
       border-bottom: none;
+    }
+    
+    .tabcontent {
+      padding: 5rem 1rem;
     }
   }
 
@@ -46,14 +60,14 @@
   }
 
   .tablinks.active {
-    background-color: rgb(var(--base-{{ section.settings.color_scheme }}));
+    background-color: rgb(var(--color-base-background-1));
   }
 {%- endstyle -%}
 
 <div>
-  <div class="tab-content page-width content-container">
-    <div class="tab-content__wrapper section-{{ section.id }}-padding{% if section.settings.layout == 'section' %} content-container gradient{% endif %}">
-      <div class="tab">
+  <div class="tab-content content-container">
+    <div class="tab-content__wrapper {% if section.settings.layout == 'section' %} content-container gradient{% endif %}">
+      <div class="tab page-width border-bottom">
         {%- for block in section.blocks -%}
           <button class="tablinks" onclick="openContent(event, '{{ block.type }}')" {% if forloop.first == true %} id="defaultOpen" {% endif %}><h3>{%- if block.type == '@app' -%}Reviews{%- else -%}{{ block.settings.tablink }}{%- endif -%}</h3></button>
         {%- endfor -%}
@@ -63,21 +77,23 @@
         <div id="{{ block.type }}" class="tabcontent color-{{ section.settings.container_color_scheme }}">
           {%- case block.type -%}
             {%- when '@app' -%}
-              {% render block %}
+              <div class="page-width">
+                {% render block %}
+              </div>
             {%- when 'text' -%}
               <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
                 {{- block.settings.text -}}
               </p>
             {%- when 'description' -%}
               {%- if product.description != blank -%}
-                <div class="product__description rte">
+                <div class="product__description rte page-width">
                   {{ product.description }}
                 </div>
               {%- endif -%}
             {%- when 'custom_liquid' -%}
               {{ block.settings.custom_liquid }}
             {%- when 'collapsible_tab' -%}
-              <div class="product__accordion accordion" {{ block.shopify_attributes }}>
+              <div class="product__accordion accordion page-width" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
                   <summary>
                     <div class="summary__title">
@@ -97,24 +113,27 @@
             {%- when 'rating' -%}
               {%- if product.metafields.reviews.rating.value != blank -%}
                 {% liquid
-                assign rating_decimal = 0
-                assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                if decimal >= 0.3 and decimal <= 0.7
-                  assign rating_decimal = 0.5
-                elsif decimal > 0.7
-                  assign rating_decimal = 1
-                endif
+                  assign rating_decimal = 0
+                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                  if decimal >= 0.3 and decimal <= 0.7
+                    assign rating_decimal = 0.5
+                  elsif decimal > 0.7
+                    assign rating_decimal = 1
+                  endif
                 %}
-                <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
-                  <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                <div class="page-width">
+                  <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+                    <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+                  </div>
+                  <p class="rating-text caption">
+                    <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+                  </p>
+                  <p class="rating-count caption">
+                    <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                    <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+                  </p>
                 </div>
-                <p class="rating-text caption">
-                  <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
-                </p>
-                <p class="rating-count caption">
-                  <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                  <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
-                </p>
+                
               {%- endif -%}
           {%- endcase -%}
         </div>

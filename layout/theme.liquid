@@ -216,7 +216,7 @@
 
     {% section 'announcement-bar' %}
     {% section 'header' %}
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    <main id="MainContent" class="content-for-layout focus-none{% if product.type == 'face' %} face{% elsif product.type == 'body' %} body{% elsif product.type == 'hair' %} hair{% endif %}" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
