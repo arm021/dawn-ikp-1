@@ -26,6 +26,7 @@
         "description": {
           "type": "description",
           "settings": {
+            "border_top": false
           }
         },
         "caption": {
@@ -35,10 +36,17 @@
             "text_style": "subtitle"
           }
         },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "quantity_selector": {
@@ -51,12 +59,6 @@
           "settings": {
             "show_dynamic_checkout": true
           }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -65,10 +67,10 @@
         "price",
         "description",
         "caption",
+        "share",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons",
-        "share"
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": true,
