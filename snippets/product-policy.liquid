@@ -1,0 +1,47 @@
+<div class="product-policy">
+	<div class="policy-card">
+		<img src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/prod-pol1.png" alt="policy-1" />
+		<p>Return within 14 days</p>
+	</div>
+	<div class="policy-card">
+		<img src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/prod-pol2.png" alt="policy-2" />
+		<p>Made in France</p>
+	</div>
+	<div class="policy-card">
+		<img src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/prod-pol3.png" alt="policy-3" />
+		<p>Customer service 9am to 6pm</p>
+	</div>
+	<div class="policy-card">
+		<img src="//cdn.shopify.com/s/files/1/0117/9005/7534/files/prod-pol4.png" alt="policy-4" />
+		<p>US free Delivengo shipping on orders over $10</p>
+	</div>
+</div>
+
+{% style %}
+	.product-policy{
+		display:grid;
+    grid-template-columns:repeat(2, auto);
+    grid-auto-rows:auto;
+    grid-gap:1rem;
+    text-align:center;
+		margin: 2.5rem 0;
+	}
+
+	@media screen and (min-width:990px){
+		.product-policy{
+			grid-gap:1rem 2rem;
+		}
+	}
+
+	.policy-card img{
+    width:100%;
+	}
+
+	@media screen and (min-width:990px){
+		.policy-card img{
+			width:70%;
+			max-width:16rem;
+		}
+	}
+{% endstyle %}
+  
