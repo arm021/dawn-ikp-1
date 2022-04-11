@@ -25,12 +25,6 @@
             "border_top": false
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {
-            "border_top": false
-          }
-        },
         "caption": {
           "type": "text",
           "settings": {
@@ -72,7 +66,6 @@
         "7a8569b8-982f-49b8-a923-06f5abd428b9",
         "title",
         "price",
-        "description",
         "caption",
         "share",
         "variant_picker",
@@ -144,7 +137,7 @@
         "164757606953c25838-0": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our newsletter"
+            "heading": "Subscribe To Our Newsletter"
           }
         },
         "164757606953c25838-2": {
