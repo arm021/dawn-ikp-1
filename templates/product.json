@@ -36,7 +36,7 @@
           "type": "combo_product",
           "settings": {
             "border_top": true,
-            "heading": "Combo product"
+            "heading": "Even better with:"
           }
         },
         "buy_buttons": {
