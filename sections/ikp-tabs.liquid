@@ -6,6 +6,8 @@
   .tab {
     display: grid;
     background-color: transparent;
+    max-width: var(--page-width);
+    margin: 0 auto;
   }
 
   .tablinks {
@@ -28,6 +30,7 @@
   @media screen and (min-width: 750px) {
     .tab {
       grid-template-columns: 1fr 1fr 1fr;
+      padding: 0 2.5rem;
     }
 
     .tablinks {
@@ -40,6 +43,10 @@
   }
 
   @media screen and (min-width: 990px) {
+    .tab {
+      padding: 0 3rem;
+    }
+
     .tabcontent {
       padding: 5rem;
     }
@@ -67,7 +74,7 @@
 <div>
   <div class="tab-content content-container">
     <div class="tab-content__wrapper {% if section.settings.layout == 'section' %} content-container gradient{% endif %}">
-      <div class="tab page-width border-bottom">
+      <div class="tab border-bottom">
         {%- for block in section.blocks -%}
           <button class="tablinks" onclick="openContent(event, '{{ block.type }}')" {% if forloop.first == true %} id="defaultOpen" {% endif %}><h3>{%- if block.type == '@app' -%}Reviews{%- else -%}{{ block.settings.tablink }}{%- endif -%}</h3></button>
         {%- endfor -%}

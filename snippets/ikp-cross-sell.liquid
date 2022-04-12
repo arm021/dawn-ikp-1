@@ -1,0 +1,106 @@
+<div class="combo__product-card">
+	<div class="combo-item">
+		{%- assign combo_handle = product.metafields.global.combo -%}
+		{%- assign combo_id = all_products[combo_handle].id -%}
+		{%- assign variant_id = all_products[combo_handle].variants.first.id -%}
+		{% capture img_id %}ProductCardImage-{{ section.id }}-{{ all_products[combo_handle].id }}{% endcapture %}
+		{% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ all_products[combo_handle].id }}{% endcapture %}
+		{%- assign img_url = all_products[combo_handle].featured_image | img_url -%}
+		
+		<div class="product-card__image-with-placeholder-wrapper" data-image-with-placeholder-wrapper>
+			<div class="product-card__image-wrapper">
+				<img id="{{ img_id }}"
+					src="{{ img_url }}"
+					sizes="(min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4), (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4), (min-width: 750px) calc((100vw - 15rem) / 8), calc((100vw - 14rem) / 3)"
+					alt="{{ all_products[combo_handle].featured_image.alt }}"
+					height="100"
+					width="100"
+					loading="lazy">
+					
+					{%- if featured_media != null -%}
+						{%- capture media_index -%}
+							{%- if featured_media.media_type == 'model' -%}{%- increment model_index -%}
+							{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{%- increment video_index -%}
+							{%- elsif featured_media.media_type == 'image'%}{%- increment image_index -%}
+							{%- endif -%}
+						{%- endcapture -%}
+						{%- assign media_index = media_index | plus: 1 -%}
+						<img id="Thumbnail-{{ section.id }}-0" srcset="{% if featured_media.preview_image.width >= 54 %}{{ featured_media.preview_image | img_url: '54x' }} 54w,{% endif %}
+							{% if featured_media.preview_image.width >= 74 %}{{ featured_media.preview_image | img_url: '74x' }} 74w,{% endif %}
+							{% if featured_media.preview_image.width >= 104 %}{{ featured_media.preview_image | img_url: '104x' }} 104w,{% endif %}
+							{% if featured_media.preview_image.width >= 162 %}{{ featured_media.preview_image | img_url: '162x' }} 162w,{% endif %}
+							{% if featured_media.preview_image.width >= 208 %}{{ featured_media.preview_image | img_url: '208x' }} 208w,{% endif %}
+							{% if featured_media.preview_image.width >= 324 %}{{ featured_media.preview_image | img_url: '324x' }} 324w,{% endif %}
+							{% if featured_media.preview_image.width >= 416 %}{{ featured_media.preview_image | img_url: '416x' }} 416w,{% endif %},
+							{{ featured_media.preview_image | img_url: 'master' }} {{ media.preview_image.width }}w"
+							src="{{ featured_media | img_url: '416x' }}"
+							sizes="(min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4), (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4), (min-width: 750px) calc((100vw - 15rem) / 8), calc((100vw - 14rem) / 3)"
+							alt="{{ featured_media.alt | escape }}"
+							height="208"
+							width="208"
+							loading="lazy"
+						>
+					{%- endif -%}
+			</div>
+			<div class="placeholder-background" data-image-placeholder></div>
+		</div>
+  </div>
+
+  <noscript>
+    {% capture image_size %}{{ max_height }}x{{ max_height }}{% endcapture %}
+    <img class="grid-view-item__image lazyload" src="{{ all_products[combo_handle].featured_image.src | img_url: image_size, scale: 2 }}" alt="{{ all_products[combo_handle].featured_image.alt }}" style="max-width: {{ max_height | times: all_products[combo_handle].featured_image.aspect_ratio }}px;">
+  </noscript>
+
+  <div>
+    <div class="h4 product-card__title" aria-hidden="true">{{ all_products[combo_handle].title }}</div>
+
+    {% render 'price', variant: all_products[combo_handle].selected_or_first_available_variant %}
+  
+    <div class="input-div">
+      <input type="checkbox" id="myCheck" onclick="addCombo()" aria-label="include"><label>Include</label>
+    </div>
+  </div>
+</div>
+
+<script>
+  function addCombo() {
+    var checkBox = document.getElementById("myCheck");
+    if (checkBox.checked == true){
+      //Ajax request to add special item to cart
+      jQuery.ajax({
+        type: "POST",
+        url: '/cart/add.js',
+        data: {
+          quantity: 1,
+          id: {{ variant_id }}
+        },
+        async: false
+      });
+    } else if (checkBox.checked == false) {
+      if (quantity <= 0) {
+        jQuery.ajax({
+          type: "POST",
+          url: '/cart/change.js',
+          data: {
+            quantity: 0,
+            id: {{ variant_id }}
+          },
+          async: false
+        });
+      } else {
+        jQuery.ajax({
+          type: "POST",
+          url: '/cart/change.js',
+          data: {
+            quantity: -1,
+            id: {{ variant_id }}
+          },
+          async: false
+        });
+      }
+      
+    } else {
+      
+    }
+  }
+</script>

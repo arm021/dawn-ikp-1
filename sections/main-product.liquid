@@ -268,11 +268,22 @@
                 </div>
               </details>
             </div>
+          {%- when 'combo_product' -%}
+            <div class="combo__product{% if block.settings.border_top %} border-top{% endif %}" {{ block.shopify_attributes }}>
+              <h3 class="combo__product-heading">
+                {{ block.settings.heading | capitalize }}
+              </h3>
+              {% render 'ikp-cross-sell' %}
+            </div>
           {%- when 'popup' -%}
-              <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
-                <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}</button>
-              </modal-opener>
-              <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
+            <modal-opener class="product-popup-modal__opener no-js-hidden" data-modal="#PopupModal-{{ block.id }}" {{ block.shopify_attributes }}>
+              <button id="ProductPopup-{{ block.id }}" class="product-popup-modal__button link" type="button" aria-haspopup="dialog">{{ block.settings.text | default: block.settings.page.title }}</button>
+            </modal-opener>
+            <a href="{{ block.settings.page.url }}" class="product-popup-modal__button link no-js">{{ block.settings.text }}</a>
+          {%- when 'product_policy' -%}
+            <div class="product__policy{% if block.settings.border_top %} border-top{% endif %}" {{ block.shopify_attributes }}>
+              {% render 'ikp-product-policy' %}
+            </div>
           {%- when 'share' -%}
             <share-button id="Share-{{ section.id }}" class="share-button" {{ block.shopify_attributes }}>
               <button class="share-button__button hidden">
@@ -289,12 +300,12 @@
                     <span id="ShareMessage-{{ section.id }}" class="share-button__message hidden" role="status">
                     </span>
                     <input type="text"
-                          class="field__input"
-                          id="url"
-                          value="{{ product.selected_variant.url | default: product.url | prepend: shop.url }}"
-                          placeholder="{{ 'general.share.share_url' | t }}"
-                          onclick="this.select();"
-                          readonly
+                      class="field__input"
+                      id="url"
+                      value="{{ product.selected_variant.url | default: product.url | prepend: shop.url }}"
+                      placeholder="{{ 'general.share.share_url' | t }}"
+                      onclick="this.select();"
+                      readonly
                     >
                     <label class="field__label" for="url">{{ 'general.share.share_url' | t }}</label>
                   </div>
@@ -724,6 +735,38 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "border_top",
+          "default": false,
+          "label": "Add top border"
+        }
+      ]
+    },
+    {
+      "type": "combo_product",
+      "name": "Combo product",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "border_top",
+          "default": false,
+          "label": "Add top border"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Combo product",
+          "label": "Heading label"
+        }
+      ]
+    },
+    {
+      "type": "product_policy",
+      "name": "Product policies",
       "limit": 1,
       "settings": [
         {
