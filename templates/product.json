@@ -32,10 +32,23 @@
             "border_top": true
           }
         },
+        "d1f86e17-6049-4ec2-810f-3aa1429c2caa": {
+          "type": "combo_product",
+          "settings": {
+            "border_top": true,
+            "heading": "Combo product"
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
+            "border_top": true
+          }
+        },
+        "f7d2e0eb-e3fc-4bb0-b350-815ce2c786cc": {
+          "type": "product_policy",
+          "settings": {
             "border_top": true
           }
         }
@@ -45,7 +58,9 @@
         "title",
         "price",
         "variant_picker",
-        "buy_buttons"
+        "d1f86e17-6049-4ec2-810f-3aa1429c2caa",
+        "buy_buttons",
+        "f7d2e0eb-e3fc-4bb0-b350-815ce2c786cc"
       ],
       "settings": {
         "enable_sticky_info": true,
